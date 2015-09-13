@@ -1,0 +1,33 @@
+$primary-grey: #515a63;
+
+.g-button {
+  padding-left: 60px !important;
+  padding-right: 60px !important;
+}
+
+.logo-container a {
+  font-size: 2.1rem;
+  color: #fff;
+}
+
+.title-area li {
+  list-style: none;
+}
+
+.ui.inverted.menu.navbar {
+  width: 100%;
+  background-color: $primary-grey;
+  a {
+    color: #fff !important
+  }
+}
+
+.ui.main.text.container {
+  margin-top: 7em;
+  color: $primary-grey;
+  height: 100vh;
+}
+
+.ui.page.grid.main {
+  margin-top: 70px;
+}

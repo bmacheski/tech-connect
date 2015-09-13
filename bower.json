@@ -1,0 +1,19 @@
+{
+  "name": "tech-connect",
+  "version": "1.0.0",
+  "homepage": "https://github.com/bmacheski/tech-connect",
+  "authors": [
+    "bmacheski <bwm0007@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "semantic": "~2.1.3"
+  }
+}
