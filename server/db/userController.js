@@ -11,7 +11,7 @@ UserController.signIn = function(profile, done, token) {
     }
     if (user) {
       user.token  = token;
-      user.name   = profile._json.name;
+      user.name   = profile._json.displayName;
       user.email  = profile._json.email;
 
       // Save updated google info
@@ -27,8 +27,15 @@ UserController.signIn = function(profile, done, token) {
       var newUser   = new User();
       newUser.gid   = profile._json.id;
       newUser.token = token;
-      newUser.name  = profile._json.name;
+      newUser.name  = profile._json.displayName;
       newUser.email = profile._json.email;
+
+      newUser.save(function(err) {
+        if (err){
+          return done(new Error(err));
+        }
+        return done(null, newUser);
+      });
     }
   })
 }

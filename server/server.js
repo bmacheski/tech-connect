@@ -19,6 +19,9 @@ app.use(express.static(path.join(config.root, 'client/public')));
 app.use('/bower_components', express.static(path.join(config.root, 'client/bower_components')))
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Connect Mongoose to Mongo database
+mongoose.connect(config.mongo.url)
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -41,9 +44,6 @@ app.use(passport.session());
 app.use('/', routes);
 
 require('./auth/config');
-
-// Connect Mongoose to Mongo database
-mongoose.connect(config.mongo.url)
 
 server.listen(app.get('port'), function() {
   console.log(chalk.green('✔ Express server listening on port ' + app.get('port')));
