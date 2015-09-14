@@ -1,8 +1,21 @@
 $primary-grey: #515a63;
 
+.footer {
+  height: 60px;
+  width: 100%;
+  position: relative;
+  clear: both;
+  bottom: 0;
+  background-color: #edeff1;
+}
+
 .g-button {
   padding-left: 60px !important;
   padding-right: 60px !important;
+}
+
+.login-form  {
+  text-align: center;
 }
 
 .logo-container a {

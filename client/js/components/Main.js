@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Navbar from './Navbar';
+import Footer from './Footer';
 import { RouteHandler } from 'react-router';
 import '../styles/HomeStyles.scss';
 
@@ -13,6 +14,7 @@ export default React.createClass({
         <div className="ui main text container">
           <RouteHandler />
         </div>
+        <Footer />
       </div>
     )
   }
