@@ -25,6 +25,7 @@
     "body-parser": "^1.13.3",
     "chalk": "^1.1.1",
     "express": "^4.13.3",
+    "express-session": "^1.11.3",
     "mongoose": "^4.1.6",
     "passport": "^0.3.0",
     "passport-google-oauth": "^0.2.0",
