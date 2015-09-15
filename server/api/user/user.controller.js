@@ -1,11 +1,12 @@
 'use strict';
 
-var User = require('./userModel');
+var User = require('../../db/user.model');
 
 var UserController = {};
 
 UserController.signIn = function(profile, done, token) {
   User.findOne({'gid': profile.id}, function(err, user) {
+    console.log(profile)
     if (err) {
       return done(err);
     }
@@ -31,7 +32,7 @@ UserController.signIn = function(profile, done, token) {
       newUser.email = profile._json.email;
 
       newUser.save(function(err) {
-        if (err){
+        if (err) {
           return done(new Error(err));
         }
         return done(null, newUser);

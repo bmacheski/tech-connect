@@ -1,5 +1,9 @@
 $primary-grey: #515a63;
 
+a {
+    color: #fff !important
+  }
+
 .footer {
   height: 60px;
   width: 100%;
@@ -30,9 +34,6 @@ $primary-grey: #515a63;
 .ui.inverted.menu.navbar {
   width: 100%;
   background-color: $primary-grey;
-  a {
-    color: #fff !important
-  }
 }
 
 .ui.main.text.container {
