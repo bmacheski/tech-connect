@@ -6,7 +6,6 @@ var UserController = {};
 
 UserController.signIn = function(profile, done, token) {
   User.findOne({'gid': profile.id}, function(err, user) {
-    console.log(profile)
     if (err) {
       return done(err);
     }

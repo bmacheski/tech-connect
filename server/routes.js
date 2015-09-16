@@ -1,11 +1,14 @@
 'use strict';
 
-var express = require('express')
-  , auth    = require('./auth/routes')
-  , job     = require('./api/job/job.controller')
-  , router  = express.Router()
+var express    = require('express')
+  , auth       = require('./auth/routes')
+  , controller = require('./api/job/job.controller')
+  , router     = express.Router();
+//, job     = require('./api/job/routes')
+
 
 router.use('/', auth);
-//router.use('/api/job', job);
+//router.use('/api/job/', job);
+router.post('/api/job/create', controller.storeJob);
 
 module.exports = router;

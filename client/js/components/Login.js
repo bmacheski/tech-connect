@@ -1,10 +1,9 @@
 'use strict';
 
 import React from 'react';
-import axios from 'axios';
 
-export default React.createClass({
-  render: function() {
+class Login extends React.Component {
+  render() {
     return (
     <div className="login-form" >
       <h1> Login </h1>
@@ -15,4 +14,6 @@ export default React.createClass({
     </div>
     )
   }
-});
+};
+
+export default Login;

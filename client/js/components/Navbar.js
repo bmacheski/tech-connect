@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-export default React.createClass({
-  render: function() {
+class Navbar extends React.Component {
+  render() {
     return (
       <div className="ui inverted menu navbar page grid">
         <nav className="logo-container">
@@ -18,4 +18,6 @@ export default React.createClass({
       </div>
     )
   }
-});
+};
+
+export default Navbar;

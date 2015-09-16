@@ -6,8 +6,8 @@ import Footer from './Footer';
 import { RouteHandler } from 'react-router';
 import '../styles/HomeStyles.scss';
 
-export default React.createClass({
-  render: function() {
+class Main extends React.Component {
+  render() {
     return (
       <div className="ui grid">
         <Navbar />
@@ -18,4 +18,6 @@ export default React.createClass({
       </div>
     )
   }
-});
+};
+
+export default Main;

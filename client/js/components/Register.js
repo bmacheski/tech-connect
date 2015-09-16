@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-export default React.createClass({
-  render: function() {
+class Register extends React.Component {
+  render() {
     return (
       <div className="login-form">
         <h1> Create a user account </h1>
@@ -14,4 +14,6 @@ export default React.createClass({
       </div>
     )
   }
-});
+};
+
+export default Register;
