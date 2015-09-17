@@ -10,5 +10,6 @@ var express    = require('express')
 router.use('/', auth);
 //router.use('/api/job/', job);
 router.post('/api/job/create', controller.storeJob);
+router.get('/api/job/all', controller.findJobs);
 
 module.exports = router;

@@ -31,7 +31,6 @@
     "passport-google-oauth": "^0.2.0",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
-    "superagent": "^1.4.0",
     "webpack": "^1.12.1"
   },
   "devDependencies": {
