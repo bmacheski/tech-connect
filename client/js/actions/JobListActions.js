@@ -15,7 +15,6 @@ class JobListActions {
       .get('/api/job/all')
       .then((jobs) => {
         this.actions.fetchJobsSuccess(jobs);
-        console.log(jobs);
       })
   }
 }

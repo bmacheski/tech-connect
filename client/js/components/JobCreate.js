@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import alt from '../utils/Alt';
 import JobActions from '../actions/JobActions';
 import JobStore from '../stores/JobStore';
 
@@ -17,6 +18,7 @@ class JobCreate extends React.Component {
 
   componentWillUnmount() {
     JobStore.unlisten(this.onChange);
+    alt.recycle(JobStore);
   }
 
   onChange(state) {
@@ -33,13 +35,12 @@ class JobCreate extends React.Component {
   }
 
   saveJob(e) {
-    console.log('boom!')
     e.preventDefault();
     var title = this.state.title;
     var description = this.state.description;
     var location = this.state.location;
     JobActions.jobCreate(title, description, location);
-    this.onSave()
+    this.onSave();
   }
 
   render() {

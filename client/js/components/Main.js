@@ -14,7 +14,6 @@ class Main extends React.Component {
         <div className="ui main text container">
           <RouteHandler />
         </div>
-        <Footer />
       </div>
     )
   }
