@@ -13,7 +13,7 @@ class Navbar extends React.Component {
           <a className="item" href="#/register/tech">Become a Technician</a>
           <a className="item" href="#/job/create">Post a Job</a>
           <a className="item" href="#/job/list">View Jobs</a>
-          <a className="item" href="#/register">Sign Up</a>
+          <a className="item" href="#/login">Sign Up</a>
           <a className="item" href="#/login">Log In</a>
         </div>
       </div>

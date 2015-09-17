@@ -2,15 +2,16 @@
 
 import React from 'react';
 
+/**
+ * Component where users can register as technicians
+ */
+
 class Register extends React.Component {
   render() {
     return (
       <div className="login-form">
-        <h1> Create a user account </h1>
-        <button className="ui google plus button g-button">
-          <i className="google plus icon"></i>
-            Sign up with Google
-        </button>
+        <h1> Become a Technician</h1>
+        <button>Register</button>
       </div>
     )
   }
