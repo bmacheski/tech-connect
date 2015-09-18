@@ -6,6 +6,7 @@ var express     = require('express')
   , config      = require('./config/development')
   , bodyParser  = require('body-parser')
   , path        = require('path')
+  , cookie      = require('cookie-parser')
   , passport    = require('passport')
   , session     = require('express-session')
   , routes      = require('./routes')
@@ -19,6 +20,7 @@ app.use(express.static(path.join(config.root, 'client/public')));
 app.use('/bower_components', express.static(path.join(config.root, 'client/bower_components')))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
+app.use(cookie());
 
 // Connect Mongoose to Mongo database
 mongoose.connect(config.mongo.url)

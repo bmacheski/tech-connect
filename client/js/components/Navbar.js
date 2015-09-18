@@ -1,8 +1,33 @@
 'use strict';
 
 import React from 'react';
+import UserStore from '../stores/UserStore';
+import UserActions from '../actions/UserActions';
+import cookie from 'react-cookie';
 
 class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = UserStore.getState();
+    this.onChange = this.onChange.bind(this);
+  }
+
+  componentDidMount() {
+    UserStore.listen(this.onChange);
+    let id = cookie.load('id');
+    let data = {id: id};
+    console.log(id);
+    UserActions.setCurrentUser(data);
+  }
+
+  componentWillUnmount() {
+    UserStore.unlisten(this.onChange);
+  }
+
+  onChange(state) {
+    this.setState(state);
+  }
+
   render() {
     return (
       <div className="ui inverted menu navbar page grid">

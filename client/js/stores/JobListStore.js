@@ -9,7 +9,6 @@ class JobListStore {
     this.jobs = [];
   }
 
-  // When jobs are retrieved from api store them in array
   onFetchJobsSuccess(res) {
     this.jobs = res.data;
   }
