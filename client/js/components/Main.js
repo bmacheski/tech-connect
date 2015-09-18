@@ -12,7 +12,7 @@ class Main extends React.Component {
       <div className="ui grid">
         <Navbar />
         <div className="ui main text container">
-          <RouteHandler />
+          <RouteHandler {...this.props}/>
         </div>
       </div>
     )

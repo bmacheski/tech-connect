@@ -5,7 +5,7 @@ var express   = require('express')
   , router    = express.Router()
 
 router.get('/auth/google', passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login' }))
-router.get('/auth/google/callback',function (req, res, next) {
+router.get('/auth/google/callback', function (req, res, next) {
   passport.authenticate('google', function(err, user) {
     if (err) {
       return next(err);

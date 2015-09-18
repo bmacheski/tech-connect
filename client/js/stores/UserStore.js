@@ -8,9 +8,13 @@ class UserStore {
     this.bindActions(UserActions);
     this.currentUser = {id: undefined};
   }
+
   onSetCurrentUser(payload) {
-    // console.log('payload: ', payload);
     this.currentUser = {id: payload.id};
+  }
+
+  onRemoveCurrentUser() {
+    this.currentUser = {id: undefined};
   }
 }
 

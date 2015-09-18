@@ -7,7 +7,6 @@ import Login from '../components/Login';
 import Register from '../components/Register';
 import JobCreate from '../components/JobCreate';
 import JobList from '../components/JobList';
-
 import { Router, DefaultRoute, Route } from 'react-router';
 
 export default (

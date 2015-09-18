@@ -26,7 +26,7 @@ class JobList extends React.Component {
   }
 
   render() {
-    var jobList = this.state.jobs.map((job) => {
+    let jobList = this.state.jobs.map((job) => {
       return (
         <JobListItem key= {job._id} job={job} />
       )

@@ -6,7 +6,8 @@ import axios from 'axios';
 class UserActions {
   constructor() {
     this.generateActions(
-      'setCurrentUser'
+      'setCurrentUser',
+      'removeCurrentUser'
     )
   }
 

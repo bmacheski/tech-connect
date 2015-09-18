@@ -13,10 +13,9 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    UserStore.listen(this.onChange);
     let id = cookie.load('id');
     let data = {id: id};
-    console.log(id);
+    UserStore.listen(this.onChange);
     UserActions.setCurrentUser(data);
   }
 
@@ -28,22 +27,49 @@ class Navbar extends React.Component {
     this.setState(state);
   }
 
+  logout() {
+    let router = this.context.router;
+    UserActions.removeCurrentUser();
+    cookie.remove('id');
+    router.transitionTo('login');
+  }
+
   render() {
-    return (
-      <div className="ui inverted menu navbar page grid">
-        <nav className="logo-container">
-          <a className="item" href="#">Tech Connect</a>
-        </nav>
-        <div className="right menu">
-          <a className="item" href="#/register/tech">Become a Technician</a>
-          <a className="item" href="#/job/create">Post a Job</a>
-          <a className="item" href="#/job/list">View Jobs</a>
-          <a className="item" href="#/login">Sign Up</a>
-          <a className="item" href="#/login">Log In</a>
+    if (cookie.load('id') === undefined) {
+      return (
+        <div className="ui inverted menu navbar page grid">
+          <nav className="logo-container">
+            <a className="item" href="#">Tech Connect</a>
+          </nav>
+          <div className="right menu">
+            <a className="item" href="#/register/tech">Become a Technician</a>
+            <a className="item" href="#/job/create">Post a Job</a>
+            <a className="item" href="#/job/list">View Jobs</a>
+            <a className="item" href="#/login">Sign Up</a>
+            <a className="item" href="#/login">Log In</a>
+          </div>
         </div>
-      </div>
+      )
+    }
+    else
+      return (
+        <div className="ui inverted menu navbar page grid">
+          <nav className="logo-container">
+            <a className="item" href="#">Tech Connect</a>
+          </nav>
+          <div className="right menu">
+            <a className="item" href="#/register/tech">Become a Technician</a>
+            <a className="item" href="#/job/create">Post a Job</a>
+            <a className="item" href="#/job/list">View Jobs</a>
+            <a className="item" onClick={this.logout.bind(this)}>Logout</a>
+          </div>
+        </div>
     )
   }
+};
+
+Navbar.contextTypes = {
+  router: React.PropTypes.func.isRequired
 };
 
 export default Navbar;
