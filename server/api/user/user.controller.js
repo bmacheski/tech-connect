@@ -24,11 +24,12 @@ UserController.signIn = function(profile, done, token) {
 
       // Save new user info to database
     } else {
-      var newUser   = new User();
-      newUser.gid   = profile._json.id;
-      newUser.token = token;
-      newUser.name  = profile._json.displayName;
-      newUser.email = profile._json.email;
+      var newUser    = new User();
+      newUser.gid    = profile._json.id;
+      newUser.token  = token;
+      newUser.name   = profile._json.displayName;
+      newUser.email  = profile._json.email;
+      newUser.isTech = false;
 
       newUser.save(function(err) {
         if (err) {

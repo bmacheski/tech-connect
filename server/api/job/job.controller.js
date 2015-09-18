@@ -4,8 +4,8 @@ var Job = require('../../db/job.model');
 
 var JobController = {};
 
+// Create and save submitted job
 JobController.storeJob = function(req, res, done) {
-  // Create and save submitted job
   var newJob         = new Job();
   newJob.title       = req.body.title
   newJob.description = req.body.description;
@@ -19,6 +19,7 @@ JobController.storeJob = function(req, res, done) {
   });
 };
 
+// Find all available jobs
 JobController.findJobs = function(req, res) {
   Job.find({}, function(err, jobs) {
     res.send(jobs);

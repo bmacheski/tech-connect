@@ -9,10 +9,30 @@ import React from 'react';
 class Register extends React.Component {
   render() {
     return (
-      <div className="login-form">
-        <h1> Become a Technician</h1>
-        <button>Register</button>
-      </div>
+      <form className="ui fluid form">
+        <div className="field">
+          <label>Name</label>
+          <input
+            placeholder="Name"
+            type="text">
+          </input>
+        </div>
+        <div className="field">
+          <label>Location</label>
+          <input
+            placeholder="Location"
+            type="text">
+          </input>
+        </div>
+        <div className="field">
+          <label>Skills</label>
+          <textarea
+            placeholder="List any particular technical areas of specialization"
+            type="text">
+          </textarea>
+        </div>
+        <button className="ui submit button" type="submit">Register</button>
+      </form>
     )
   }
 };

@@ -32,7 +32,7 @@ class JobList extends React.Component {
       )
     })
     return (
-      <div className="ui middle aligned divided list">
+      <div className="ui celled list">
         <h1>Available Jobs</h1>
         {jobList}
       </div>
