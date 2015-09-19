@@ -16,6 +16,6 @@ export default (
     <Route name="techregister" path="/register/tech" handler={Register} />
     <Route name="createjob" path="/job/create" handler={JobCreate} />
     <Route name="listjobs" path="/job/list" handler={JobList} />
-    <DefaultRoute handler={Home} />
+    <DefaultRoute name="home" handler={Home} />
   </Route>
 );
