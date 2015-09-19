@@ -6,18 +6,16 @@ import axios from 'axios';
 class TechProfileActions {
   constructor() {
     this.generateActions(
-      'updateName',
-      'updateLocation',
-      'updateBio'
+      'updateBio',
+      'updateLocation'
     )
   }
-    createProfile(id, name, location, bio) {
+    createProfile(id, location, bio) {
       axios
         .post('/api/tech/create', {
           id: id,
-          name: name,
-          location: location,
-          bio: bio
+          bio: bio,
+          location: location
         })
         .then(() => {
           console.log('profile posted!');

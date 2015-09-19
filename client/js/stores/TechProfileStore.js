@@ -6,13 +6,8 @@ import TechProfileActions from '../actions/TechProfileActions';
 class TechProfileStore {
   constructor() {
     this.bindActions(TechProfileActions);
-    this.name = '';
     this.location = '';
     this.bio = '';
-  }
-
-  onUpdateName(e) {
-    this.name = e.target.value;
   }
 
   onUpdateLocation(e) {

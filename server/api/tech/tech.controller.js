@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * NOT BEING USED AT THE MOMENT
+ */
+
 var Tech = require('../../db/tech.model');
 
 var TechController = {};

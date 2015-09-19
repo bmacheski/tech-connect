@@ -31,26 +31,16 @@ class Register extends React.Component {
   saveProfile(e) {
     e.preventDefault();
     let id = cookie.load('id');
-    let name = this.state.name;
     let location = this.state.location;
     let bio = this.state.bio;
     let router = this.context.router;
-    TechProfileActions.createProfile(id, name, location, bio);
+    TechProfileActions.createProfile(id, location, bio);
     router.transitionTo('home');
   }
 
   render() {
     return (
       <form className="ui fluid form" onSubmit={this.saveProfile.bind(this)}>
-        <div className="field">
-          <label>Name</label>
-          <input
-            placeholder="Name"
-            value={this.state.name}
-            type="text"
-            onChange={TechProfileActions.updateName}>
-          </input>
-        </div>
         <div className="field">
           <label>Location</label>
           <input

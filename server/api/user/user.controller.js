@@ -41,4 +41,29 @@ UserController.signIn = function(profile, done, token) {
   })
 }
 
+// Controls users registering as technicians
+UserController.registerAsTech = function(req, res, done) {
+  var uid = req.body.id;
+  User.findOne({'_id': uid}, function(err, user) {
+    if (err) {
+      return done(err);
+    }
+    if (user) {
+      user.isTech   = true;
+      user.bio      = req.body.bio;
+      user.location = req.body.location;
+      user.save(function(err) {
+        if(err) {
+          conosle.log('error updating tech info.')
+        }
+      })
+      res.sendStatus(200);
+    }
+    else {
+      console.log("User not found");
+      res.sendStatus(404);
+    }
+  })
+}
+
 module.exports = UserController;

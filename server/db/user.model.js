@@ -7,7 +7,10 @@ var UserSchema = new mongoose.Schema({
   token: String,
   name: String,
   email: String,
-  isTech: Boolean
+  // Technician specific profile data
+  isTech: Boolean,
+  bio: String,
+  location: String
 });
 
 module.exports = mongoose.model('User', UserSchema);
