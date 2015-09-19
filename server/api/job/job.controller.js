@@ -15,6 +15,7 @@ JobController.storeJob = function(req, res, done) {
     if (err) {
       return done(new Error(err));
     }
+    res.sendStatus(200)
     return done(null, newJob);
   });
 };

@@ -45,4 +45,15 @@ TechController.acceptJob = function(req, res, done) {
   })
 };
 
+TechController.findAcceptedJobs = function(req, res, done) {
+  var id = req.cookies.id;
+  Tech.findOne({'uid' : id},  function(err, tech) {
+    if (err) {
+      return done(err);
+    }
+      var jobs = tech.jobs
+      res.send(jobs);
+  })
+}
+
 module.exports = TechController;

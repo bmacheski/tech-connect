@@ -14,6 +14,8 @@ router.post('/api/job/create', jobController.storeJob);
 router.get('/api/job/all', jobController.findJobs);
 
 // Technician routes
+router.get('/api/acceptjobs', techController.findAcceptedJobs)
 router.post('/api/tech/create', userController.registerAsTech);
 router.post('/api/tech/job/accept', techController.acceptJob)
+
 module.exports = router;
