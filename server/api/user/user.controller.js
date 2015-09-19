@@ -57,6 +57,7 @@ UserController.registerAsTech = function(req, res, done) {
           conosle.log('error updating tech info.')
         }
       })
+      res.cookie('isTech', user.isTech)
       res.sendStatus(200);
     }
     else {

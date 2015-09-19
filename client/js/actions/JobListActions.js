@@ -17,6 +17,20 @@ class JobListActions {
         this.actions.fetchJobsSuccess(jobs);
       })
   }
-}
+
+  acceptJob(id, title, description, location) {
+    axios
+      .post('/api/tech/job/accept', {
+        id: id,
+        title: title,
+        description: description,
+        location: location
+      })
+      .then(() => {
+        console.log('job saved!')
+      })
+  }
+
+ }
 
 export default alt.createActions(JobListActions);

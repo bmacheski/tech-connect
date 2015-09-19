@@ -6,7 +6,6 @@ var TechnicianSchema = new mongoose.Schema({
   uid: String,
   // Jobs is an array storing all accepted jobs
   jobs: [{
-    ownerid: String,
     title: String,
     description: String,
     location: String

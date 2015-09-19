@@ -9,4 +9,3 @@ router.post('/job/create', controller.storeJob);
 router.get('/job/all', controller.findJobs);
 
 module.exports = router;
-

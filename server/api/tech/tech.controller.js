@@ -1,29 +1,48 @@
 'use strict';
 
-/**
- * NOT BEING USED AT THE MOMENT
- */
-
 var Tech = require('../../db/tech.model');
 
 var TechController = {};
 
-// Create and save submitted technician profile
-TechController.storeProfile = function(req, res, done) {
-  // The uid is the user profile ID
-  var newProfile       = new Tech();
-  newProfile.uid       = req.body.id
-  newProfile.name      = req.body.name;
-  newProfile.location  = req.body.location;
-  newProfile.bio       = req.body.bio;
-
-  newProfile.save(function(err) {
+// Accept and store technician jobs
+TechController.acceptJob = function(req, res, done) {
+  Tech.findOne({'uid': req.body.id}, function(err, tech) {
     if (err) {
-      return done(new Error(err));
+      return done(err);
     }
-    res.sendStatus(202);
-    return done(null, newProfile);
-  });
+    // if technician already has profile save job info
+    if(tech) {
+      tech.jobs.push({
+        title: req.body.title,
+        description: req.body.description,
+        location: req.body.location
+      })
+      tech.save(function(err) {
+        if (err) {
+          return done(new Error(err));
+        }
+      res.sendStatus(202);
+      return done(null, tech);
+      })
+    }
+    // if technician doesn't have profile create profile & save job info
+    else {
+      var newTech = new Tech();
+      newTech.uid = req.body.id
+      newTech.jobs.push({
+        title: req.body.title,
+        description: req.body.description,
+        location: req.body.location
+      })
+      newTech.save(function(err) {
+        if (err) {
+          return done(new Error(err));
+        }
+      res.sendStatus(202);
+      return done(null, newTech);
+      });
+    }
+  })
 };
 
 module.exports = TechController;
