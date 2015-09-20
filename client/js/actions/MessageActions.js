@@ -6,15 +6,21 @@ import axios from 'axios';
 class MessageActions {
   constructor() {
     this.generateActions(
-      ''
+      'techMessageSuccess',
+      'updateName',
+      'updateMessage'
     )
   }
 
   sendTechMessage(id, name, message) {
     axios
-      .post('/api/user/message')
+      .post('/api/user/message', {
+        id: id,
+        name: name,
+        message: message
+      })
       .then(() => {
-        this.actions.
+        console.log('boomm!!!')
       })
   }
 }

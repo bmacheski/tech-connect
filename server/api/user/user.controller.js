@@ -66,7 +66,6 @@ UserController.registerAsTech = function(req, res, done) {
   })
 }
 
-
 UserController.saveRecievedMessage = function(req, res, done) {
   var uid = req.body.id;
   User.findOne({'_id': uid}, function(err, user) {
@@ -75,8 +74,8 @@ UserController.saveRecievedMessage = function(req, res, done) {
     }
     if(user) {
       user.recievedMessages.push({
-        name: req.name,
-        message: req.message
+        name: req.body.name,
+        message: req.body.message
       })
       user.save(function(err) {
         if (err) {
