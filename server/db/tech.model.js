@@ -8,7 +8,8 @@ var TechnicianSchema = new mongoose.Schema({
   jobs: [{
     title: String,
     description: String,
-    location: String
+    location: String,
+    pid: String // Job creator ID
   }]
 });
 

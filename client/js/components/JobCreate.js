@@ -4,6 +4,8 @@ import React from 'react';
 import alt from '../utils/Alt';
 import JobActions from '../actions/JobActions';
 import JobStore from '../stores/JobStore';
+import Notification from 'react-notification-system';
+import cookie from 'react-cookie';
 
 class JobCreate extends React.Component {
   constructor(props) {
@@ -36,10 +38,11 @@ class JobCreate extends React.Component {
 
   saveJob(e) {
     e.preventDefault();
-    var title = this.state.title;
-    var description = this.state.description;
-    var location = this.state.location;
-    JobActions.jobCreate(title, description, location);
+    let title = this.state.title;
+    let description = this.state.description;
+    let location = this.state.location;
+    let id = cookie.load('id');
+    JobActions.jobCreate(title, description, location, id);
     this.onSave();
   }
 

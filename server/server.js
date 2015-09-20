@@ -44,9 +44,8 @@ app.use(passport.initialize());
 // Enable persistent login sessions
 app.use(passport.session());
 
-app.use('/', routes);
-
 require('./auth/config');
+app.use('/', routes);
 
 server.listen(app.get('port'), function() {
   console.log(chalk.green('✔ Express server listening on port ' + app.get('port')));

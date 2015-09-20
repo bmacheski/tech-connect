@@ -10,6 +10,7 @@ JobController.storeJob = function(req, res, done) {
   newJob.title       = req.body.title
   newJob.description = req.body.description;
   newJob.location    = req.body.location;
+  newJob.uid         = req.body.uid;
 
   newJob.save(function(err) {
     if (err) {

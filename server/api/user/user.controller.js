@@ -12,7 +12,6 @@ UserController.signIn = function(profile, done, token) {
     if (user) {
       user.token  = token;
       user.name   = profile._json.displayName;
-      user.email  = profile._json.email;
 
       // Save updated google info
       user.save(function() {
@@ -28,7 +27,7 @@ UserController.signIn = function(profile, done, token) {
       newUser.gid    = profile._json.id;
       newUser.token  = token;
       newUser.name   = profile._json.displayName;
-      newUser.email  = profile._json.email;
+      newUser.email  = profile._json.emails[0].value;
       newUser.isTech = false;
 
       newUser.save(function(err) {

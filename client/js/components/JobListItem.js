@@ -10,7 +10,8 @@ class JobListItem extends React.Component {
     let title = this.props.job.title;
     let description = this.props.job.description;
     let location = this.props.job.location;
-    JobListActions.acceptJob(id, title, description, location);
+    let uid = this.props.job.uid;
+    JobListActions.acceptJob(id, title, description, location, uid);
   }
   render() {
     return (
@@ -18,6 +19,7 @@ class JobListItem extends React.Component {
         <div className="header"><span>Title:  </span>{this.props.job.title}</div>
         <div className="content"><span>Description:  </span>{this.props.job.description}</div>
         <div className="content"><span>Location:  </span>{this.props.job.location}</div>
+        <div className="hidden"><span>ID:  </span>{this.props.job.uid}</div>
         <div className="ui button" onClick={this.acceptJob.bind(this)}>Add</div>
       </div>
     )

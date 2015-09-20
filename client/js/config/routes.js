@@ -8,6 +8,7 @@ import Register from '../components/Register';
 import JobCreate from '../components/JobCreate';
 import JobList from '../components/JobList';
 import AcceptJobList from '../components/AcceptJobList';
+import SendMessage from '../components/SendMessage';
 import { Router, DefaultRoute, Route } from 'react-router';
 
 export default (
@@ -18,6 +19,7 @@ export default (
     <Route name="createjob" path="/job/create" handler={JobCreate} />
     <Route name="listjobs" path="/job/list" handler={JobList} />
     <Route name="acceptedjobs" path="/job/accepted" handler={AcceptJobList} />
+    <Route name="message" path="job/accepted/message/:posterId" handler={SendMessage} />
     <DefaultRoute name="home" handler={Home} />
   </Route>
 );

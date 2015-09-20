@@ -7,6 +7,14 @@ var UserSchema = new mongoose.Schema({
   token: String,
   name: String,
   email: String,
+  postedJobs: [{
+    title: String,
+    description: String,
+    location: String
+  }],
+  recievedMessages: [{
+    message: String
+  }],
   // Technician specific profile data
   isTech: Boolean,
   bio: String,

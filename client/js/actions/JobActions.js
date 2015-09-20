@@ -13,12 +13,13 @@ class JobActions {
     )
   }
 
-  jobCreate(title, description, location) {
+  jobCreate(title, description, location, uid) {
     axios
       .post('/api/job/create', {
         title: title,
         description: description,
-        location: location
+        location: location,
+        uid: uid // job creator ID
       })
       .then((data) => {
         this.actions.jobCreatedSuccess(data);

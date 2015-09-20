@@ -15,13 +15,14 @@ TechController.acceptJob = function(req, res, done) {
       tech.jobs.push({
         title: req.body.title,
         description: req.body.description,
-        location: req.body.location
+        location: req.body.location,
+        pid: req.body.pid
       })
       tech.save(function(err) {
         if (err) {
           return done(new Error(err));
         }
-      res.sendStatus(202);
+      res.sendStatus(200);
       return done(null, tech);
       })
     }
@@ -32,13 +33,14 @@ TechController.acceptJob = function(req, res, done) {
       newTech.jobs.push({
         title: req.body.title,
         description: req.body.description,
-        location: req.body.location
+        location: req.body.location,
+        pid: req.body.pid
       })
       newTech.save(function(err) {
         if (err) {
           return done(new Error(err));
         }
-      res.sendStatus(202);
+      res.sendStatus(200);
       return done(null, newTech);
       });
     }
@@ -51,8 +53,13 @@ TechController.findAcceptedJobs = function(req, res, done) {
     if (err) {
       return done(err);
     }
+    if(tech){
       var jobs = tech.jobs
       res.send(jobs);
+    }
+    else {
+      console.log('there are no jobs listed.')
+    }
   })
 }
 
