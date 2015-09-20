@@ -13,6 +13,7 @@ var UserSchema = new mongoose.Schema({
     location: String
   }],
   recievedMessages: [{
+    name: String,
     message: String
   }],
   // Technician specific profile data
