@@ -54,11 +54,11 @@ TechController.findAcceptedJobs = function(req, res, done) {
       return done(err);
     }
     if(tech){
-      var jobs = tech.jobs
+      var jobs = tech.jobs;
       res.send(jobs);
     }
     else {
-      console.log('there are no jobs listed.')
+      console.log('there are no jobs listed.');
     }
   })
 }

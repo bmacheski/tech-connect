@@ -26,10 +26,10 @@ class SendMessage extends React.Component {
   submitMessage(e) {
     e.preventDefault()
     this.router = this.context.router
-    let pid = this.router.getCurrentParams().posterId;
+    let sid = this.router.getCurrentParams().senderId;
     let name = this.state.name;
     let message = this.state.message;
-    MessageActions.sendTechMessage(pid, name, message)
+    MessageActions.sendMessage(sid, name, message)
   }
 
   render() {

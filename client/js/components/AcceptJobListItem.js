@@ -5,8 +5,8 @@ import React from 'react';
 class AcceptJobListItem extends React.Component {
   handleSend() {
     let router = this.context.router;
-    let posterId = this.props.job.pid;
-    router.transitionTo('message', {posterId: posterId});
+    let senderId = this.props.job.pid;
+    router.transitionTo('message', {senderId: senderId});
   }
 
   render() {

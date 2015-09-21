@@ -15,7 +15,7 @@ router.get('/auth/google/callback', function (req, res, next) {
       if (user) {
         res.cookie('id', user.id)
         res.cookie('isTech', user.isTech)
-        res.cookie('email', user.email)
+        res.cookie('name', user.name)
       }
       res.redirect('/')
     }

@@ -12,7 +12,7 @@ class MessageActions {
     )
   }
 
-  sendTechMessage(id, name, message) {
+  sendMessage(id, name, message) {
     axios
       .post('/api/user/message', {
         id: id,
