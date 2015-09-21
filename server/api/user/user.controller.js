@@ -87,4 +87,22 @@ UserController.saveRecievedMessage = function(req, res, done) {
   })
 }
 
+UserController.findRecievedMessages = function(req, res, done) {
+  var id = req.cookies.id;
+  User.findOne({'_id' : id}, function(err, user) {
+    if (err) {
+      return done(err);
+    }
+    if (user) {
+      var messages = user.recievedMessages;
+      res.send(messages);
+    }
+    else {
+      console.log('there are no messages listed.')
+    }
+  })
+}
+
+
+
 module.exports = UserController;
