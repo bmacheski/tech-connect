@@ -28,4 +28,12 @@ JobController.findJobs = function(req, res) {
   })
 }
 
+// Find all user(non-tech) posted jobs
+JobController.findCurrentJobs = function(req, res, next) {
+  var uid = req.cookies.id;
+  Job.find({uid: uid}, function(err, jobs) {
+    res.send(jobs);
+  })
+}
+
 module.exports = JobController;

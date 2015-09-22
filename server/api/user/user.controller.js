@@ -107,6 +107,4 @@ UserController.findRecievedMessages = function(req, res, done) {
   })
 }
 
-
-
 module.exports = UserController;
