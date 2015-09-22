@@ -48,36 +48,36 @@ class JobCreate extends React.Component {
 
   render() {
     return (
-      <form className="ui fluid form" onSubmit={this.saveJob.bind(this)}>
-        <div className="field">
-          <label>Job Title</label>
-          <input type="text"
-            placeholder="Job Title"
-            value={this.state.title}
-            onChange={JobActions.updateTitle}>
-          </input>
-        </div>
-        <div className="field">
-          <label>Job Description</label>
-          <textarea
-            placeholder="Job Description"
-            value={this.state.description}
-            onChange={JobActions.updateDescription}>
-          </textarea>
-        </div>
-        <div className="two fields">
+      <div className="ui container holder">
+        <form className="ui fluid form" onSubmit={this.saveJob.bind(this)}>
+         <div className="field">
+            <label>Title</label>
+            <input type="text"
+              placeholder="Enter a short title"
+              value={this.state.title}
+              onChange={JobActions.updateTitle}>
+            </input>
+          </div>
           <div className="field">
-            <label>City</label>
+            <label>Location</label>
             <input
-              placeholder="City"
+              placeholder="Enter the location of the job"
               type="text"
               value={this.state.location}
               onChange={JobActions.updateLocation}>
             </input>
           </div>
-        </div>
-        <button className="ui submit button" type="submit">Submit Job</button>
-      </form>
+          <div className="field">
+            <label>Job Description</label>
+            <textarea
+              placeholder="Create a short/detailed description of the issue you are facing"
+              value={this.state.description}
+              onChange={JobActions.updateDescription}>
+            </textarea>
+          </div>
+          <button className="ui submit button" type="submit">Submit Job</button>
+        </form>
+      </div>
     )
   }
 };

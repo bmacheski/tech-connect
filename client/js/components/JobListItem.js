@@ -19,8 +19,7 @@ class JobListItem extends React.Component {
         <div className="header"><span>Title:  </span>{this.props.job.title}</div>
         <div className="content"><span>Description:  </span>{this.props.job.description}</div>
         <div className="content"><span>Location:  </span>{this.props.job.location}</div>
-        <div className="hidden"><span>ID:  </span>{this.props.job.uid}</div>
-        <div className="ui button" onClick={this.acceptJob.bind(this)}>Add</div>
+        <div className="tiny ui button repl-button" onClick={this.acceptJob.bind(this)}>Add</div>
       </div>
     )
   }

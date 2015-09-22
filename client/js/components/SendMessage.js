@@ -30,22 +30,26 @@ class SendMessage extends React.Component {
     let sid = this.router.getCurrentParams().senderId;
     let date = moment().format("dddd, MMMM Do YYYY");
     let message = this.state.message;
-    MessageActions.sendMessage(sid, message, date)
+    if (message) {
+      MessageActions.sendMessage(sid, message, date)
+    }
   }
 
   render() {
     return (
-      <form className="ui fluid form" onSubmit={this.submitMessage.bind(this)}>
-        <div className="field">
-          <label>Message</label>
-          <textarea
-            placeholder="Message"
-            value={this.state.message}
-            onChange={MessageActions.updateMessage}>
-          </textarea>
-        </div>
-        <button className="ui submit button" type="submit">Submit Message</button>
-      </form>
+      <div className="ui container holder">
+        <form className="ui fluid form" onSubmit={this.submitMessage.bind(this)}>
+          <div className="field">
+            <label>Message</label>
+            <textarea
+              placeholder="Message"
+              value={this.state.message}
+              onChange={MessageActions.updateMessage}>
+            </textarea>
+          </div>
+          <button className="ui submit button" type="submit">Submit Message</button>
+        </form>
+      </div>
     )
   }
 };

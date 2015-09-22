@@ -34,9 +34,11 @@ class AcceptJobList extends React.Component {
       )
     })
     return (
-      <div className="ui celled list">
-        <h1>Accepted Jobs</h1>
-        {acceptJobList}
+      <div className="ui container holder">
+        <div className="ui celled list">
+          <h1>Accepted Jobs</h1>
+          {acceptJobList}
+        </div>
       </div>
     )
   }

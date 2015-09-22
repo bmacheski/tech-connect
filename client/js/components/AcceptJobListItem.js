@@ -16,7 +16,7 @@ class AcceptJobListItem extends React.Component {
         <div className="content"><span>Description:  </span>{this.props.job.description}</div>
         <div className="content"><span>Location:  </span>{this.props.job.location}</div>
         <div className="content"><span>ID: </span>{this.props.job.pid}</div>
-        <div className="ui button" onClick={this.handleSend.bind(this)}>Send User a Message</div>
+        <div className="tiny ui button repl-button" onClick={this.handleSend.bind(this)}>Send User a Message</div>
       </div>
     )
   }

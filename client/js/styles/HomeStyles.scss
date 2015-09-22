@@ -4,6 +4,16 @@ a {
     color: #fff !important
 }
 
+.about.p {
+  font-size: 20px;
+}
+
+.banner-title {
+  color: white;
+  text-align: center;
+  padding-top: 15%;
+}
+
 .footer {
   height: 60px;
   width: 100%;
@@ -18,6 +28,20 @@ a {
   padding-right: 60px !important;
 }
 
+.home-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/techguy.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  margin: 0px !important;
+  height: 545px;
+  margin: -20px;
+}
+
+.login-container {
+  margin-top: 5%;
+}
+
 .login-form  {
   text-align: center;
 }
@@ -27,6 +51,14 @@ a {
   color: #fff;
 }
 
+.main-container {
+  height: 100vh;
+  width: 100%;
+}
+.repl-button {
+  margin: 5px !important;
+}
+
 .title-area li {
   list-style: none;
 }
@@ -34,12 +66,16 @@ a {
 .ui.inverted.menu.navbar {
   width: 100%;
   background-color: $primary-grey;
+  margin-bottom: 0;
 }
 
 .ui.main.text.container {
-  margin-top: 3em;
   color: $primary-grey;
   height: 100vh;
+}
+
+.ui.container.holder {
+  margin-top: 20px;
 }
 
 .ui.page.grid.main {

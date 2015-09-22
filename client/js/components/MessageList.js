@@ -33,9 +33,11 @@ class MessageList extends React.Component {
       )
     })
     return (
-      <div className="ui celled list">
-        <h1> Current Messages </h1>
-        {messageList}
+      <div className="ui container holder">
+        <div className="ui celled list">
+          <h1> Current Messages </h1>
+          {messageList}
+        </div>
       </div>
     )
   }

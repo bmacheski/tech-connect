@@ -40,27 +40,29 @@ class Register extends React.Component {
 
   render() {
     return (
-      <form className="ui fluid form" onSubmit={this.saveProfile.bind(this)}>
-        <div className="field">
-          <label>Location</label>
-          <input
-            placeholder="Location"
-            value={this.state.location}
-            type="text"
-            onChange={TechProfileActions.updateLocation}>
-          </input>
-        </div>
-        <div className="field">
-          <label>Bio</label>
-          <textarea
-            placeholder="Create a short overview of your background in technology."
-            value={this.state.bio}
-            type="text"
-            onChange={TechProfileActions.updateBio}>
-          </textarea>
-        </div>
-        <button className="ui submit button" type="submit">Register</button>
-      </form>
+      <div className="ui container holder">
+        <form className="ui fluid form" onSubmit={this.saveProfile.bind(this)}>
+          <div className="field">
+            <label>Location</label>
+            <input
+              placeholder="Location"
+              value={this.state.location}
+              type="text"
+              onChange={TechProfileActions.updateLocation}>
+            </input>
+          </div>
+          <div className="field">
+            <label>Bio</label>
+            <textarea
+              placeholder="Create a short overview of your background in technology."
+              value={this.state.bio}
+              type="text"
+              onChange={TechProfileActions.updateBio}>
+            </textarea>
+          </div>
+          <button className="ui submit button" type="submit">Register</button>
+        </form>
+      </div>
     )
   }
 };

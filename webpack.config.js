@@ -1,12 +1,11 @@
 var WebpackNotifierPlugin = require('webpack-notifier');
-
-//filename: "./client/public/bundle.js"
+var path                  = require('path');
 
 module.exports = {
   entry: "./client/js/App.js",
   output: {
-    path: "./client/public",
-    publicPath: "./client/public",
+    path: path.join(__dirname, '/client/public'),
+    publicPath: "public/",
     filename: "bundle.js"
   },
   module: {
@@ -23,6 +22,9 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'style!css!sass'
+      },
+      { test: /\.(png|jpg)$/,
+        loader: 'url-loader?limit=8192'
       }
     ]
   },
