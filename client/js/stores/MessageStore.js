@@ -6,12 +6,7 @@ import MessageActions from '../actions/MessageActions';
 class MessageStore {
   constructor() {
     this.bindActions(MessageActions);
-    this.name = '';
     this.message = '';
-  }
-
-  onUpdateName(e) {
-    this.name = e.target.value;
   }
 
   onUpdateMessage(e) {

@@ -3,6 +3,7 @@
 import React from 'react';
 import MessageStore from '../stores/MessageStore';
 import MessageActions from '../actions/MessageActions';
+import moment from 'moment';
 
 class SendMessage extends React.Component {
   constructor(props) {
@@ -27,22 +28,14 @@ class SendMessage extends React.Component {
     e.preventDefault()
     this.router = this.context.router
     let sid = this.router.getCurrentParams().senderId;
-    let name = this.state.name;
+    let date = moment().format("dddd, MMMM Do YYYY");
     let message = this.state.message;
-    MessageActions.sendMessage(sid, name, message)
+    MessageActions.sendMessage(sid, message, date)
   }
 
   render() {
     return (
       <form className="ui fluid form" onSubmit={this.submitMessage.bind(this)}>
-        <div className="field">
-          <label>Name</label>
-          <input type="text"
-            placeholder="Name"
-            value={this.state.name}
-            onChange={MessageActions.updateName}>
-          </input>
-        </div>
         <div className="field">
           <label>Message</label>
           <textarea

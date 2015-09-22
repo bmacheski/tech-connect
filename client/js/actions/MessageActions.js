@@ -7,17 +7,16 @@ class MessageActions {
   constructor() {
     this.generateActions(
       'techMessageSuccess',
-      'updateName',
       'updateMessage'
     )
   }
 
-  sendMessage(id, name, message) {
+  sendMessage(id, message, date) {
     axios
       .post('/api/user/message', {
         id: id,
-        name: name,
-        message: message
+        message: message,
+        date: date
       })
       .then(() => {
         console.log('boomm!!!')

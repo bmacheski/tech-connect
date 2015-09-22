@@ -68,6 +68,7 @@ UserController.registerAsTech = function(req, res, done) {
 
 UserController.saveRecievedMessage = function(req, res, done) {
   var uid = req.body.id;
+  var name = req.cookies.name;
   var sid = req.cookies.id;
   User.findOne({'_id': uid}, function(err, user) {
     if (err) {
@@ -75,8 +76,9 @@ UserController.saveRecievedMessage = function(req, res, done) {
     }
     if(user) {
       user.recievedMessages.push({
-        name: req.body.name,
+        name: name,
         message: req.body.message,
+        date: req.body.date,
         senderId: sid
       })
       user.save(function(err) {

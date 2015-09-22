@@ -45,6 +45,7 @@ class Navbar extends React.Component {
             <a className="item" href="#">Tech Connect</a>
           </nav>
           <div className="right menu">
+            <a className="item" href="#/about">About</a>
             <a className="item" href="#/login">Sign Up</a>
             <a className="item" href="#/login">Log In</a>
           </div>
@@ -59,6 +60,7 @@ class Navbar extends React.Component {
             <a className="item" href="#">Tech Connect</a>
           </nav>
           <div className="right menu">
+            <a className="item" href="#/about">About</a>
             <a className="item" href="#/job/list">View Jobs</a>
             <a className="item" href="#/job/accepted">Accepted Jobs</a>
             <a className="item" href="#/user/messages">Messages</a>
@@ -74,8 +76,10 @@ class Navbar extends React.Component {
             <a className="item" href="#">Tech Connect</a>
           </nav>
           <div className="right menu">
+            <a className="item" href="#/about">About</a>
             <a className="item" href="#/register/tech">Become a Technician</a>
             <a className="item" href="#/job/create">Post a Job</a>
+            <a className="item" href="#/job/current">My Jobs</a>
             <a className="item" href="#/user/messages">Messages</a>
             <a className="item" onClick={this.logout.bind(this)}>Logout</a>
           </div>
