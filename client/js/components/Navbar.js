@@ -60,6 +60,7 @@ class Navbar extends React.Component {
             <a className="item" href="#">Tech Connect</a>
           </nav>
           <div className="right menu">
+            <a className="item" href="#/home">Home</a>
             <a className="item" href="#/about">About</a>
             <a className="item" href="#/job/list">View Jobs</a>
             <a className="item" href="#/job/accepted">Accepted Jobs</a>
@@ -76,6 +77,7 @@ class Navbar extends React.Component {
             <a className="item" href="#">Tech Connect</a>
           </nav>
           <div className="right menu">
+            <a className="item" href="#/home">Home</a>
             <a className="item" href="#/about">About</a>
             <a className="item" href="#/register/tech">Become a Technician</a>
             <a className="item" href="#/job/create">Post a Job</a>

@@ -4,7 +4,6 @@ import React from 'react';
 import alt from '../utils/Alt';
 import JobActions from '../actions/JobActions';
 import JobStore from '../stores/JobStore';
-import Notification from 'react-notification-system';
 import cookie from 'react-cookie';
 
 class JobCreate extends React.Component {

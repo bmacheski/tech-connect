@@ -6,7 +6,7 @@ import axios from 'axios';
 class JobActions {
   constructor() {
     this.generateActions(
-      'jobCreatedSuccess',
+      'jobCreateSuccess',
       'updateTitle',
       'updateDescription',
       'updateLocation'
@@ -22,7 +22,7 @@ class JobActions {
         uid: uid // job creator ID
       })
       .then((data) => {
-        this.actions.jobCreatedSuccess(data);
+        this.actions.jobCreateSuccess(data);
       })
   }
 }

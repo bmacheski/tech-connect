@@ -14,10 +14,12 @@ class JobStore {
     this.title = '';
     this.description = '';
     this.location = '';
+    this.jobPostStatus = '';
   }
 
   onJobCreateSuccess(message) {
     console.log(message);
+    this.jobPostStatus = message;
   }
 
   onUpdateTitle(e) {

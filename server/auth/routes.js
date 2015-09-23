@@ -17,7 +17,7 @@ router.get('/auth/google/callback', function (req, res, next) {
         res.cookie('isTech', user.isTech)
         res.cookie('name', user.name)
       }
-      res.redirect('/')
+      res.redirect('/#/home')
     }
   })(req, res, next);
 })

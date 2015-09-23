@@ -1,14 +1,14 @@
 'use strict';
 
 import React from 'react';
+import cookie from 'react-cookie';
 
 class Home extends React.Component {
   render() {
+    let name = cookie.load('name')
     return (
-      <div className="home-container">
-        <div className="ui container">
-          <h1 className="banner-title">Have your home technology fixed quickly and reliably.</h1>
-        </div>
+      <div className="ui container holder">
+        <h1><span>Welcome {name}!</span></h1>
       </div>
     )
   }
