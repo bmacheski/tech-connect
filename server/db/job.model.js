@@ -6,6 +6,7 @@ var JobSchema = new mongoose.Schema({
   title: String,
   description: String,
   location: String,
+  date: String,
   uid: String
 });
 

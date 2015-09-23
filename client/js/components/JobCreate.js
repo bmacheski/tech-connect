@@ -5,6 +5,7 @@ import alt from '../utils/Alt';
 import JobActions from '../actions/JobActions';
 import JobStore from '../stores/JobStore';
 import cookie from 'react-cookie';
+import moment from 'moment';
 
 class JobCreate extends React.Component {
   constructor(props) {
@@ -40,8 +41,9 @@ class JobCreate extends React.Component {
     let title = this.state.title;
     let description = this.state.description;
     let location = this.state.location;
+    let date = moment().format("dddd, MMMM Do YYYY");
     let id = cookie.load('id');
-    JobActions.jobCreate(title, description, location, id);
+    JobActions.jobCreate(title, description, location, date, id);
     this.onSave();
   }
 

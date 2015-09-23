@@ -33,7 +33,7 @@ class JobsCurrent extends React.Component {
     })
     return (
       <div className="ui container holder">
-        <div>
+        <div className="ui celled list">
           <h1> My Currently Available Jobs</h1>
           {jobsCurrentList}
         </div>

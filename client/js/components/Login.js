@@ -8,10 +8,12 @@ class Login extends React.Component {
       <div className="ui container login-container">
         <div className="login-form" >
           <h1> Login/Register </h1>
-          <button className="ui google plus button g-button">
+          <a href='/auth/google'>
+            <button className="ui google plus button g-button">
             <i className="google plus icon"></i>
-            <a href='/auth/google'>Log In with Google</a>
-          </button>
+              Log In with Google
+            </button>
+          </a>
         </div>
       </div>
     )
