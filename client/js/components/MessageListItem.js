@@ -24,7 +24,7 @@ class MessageListItem extends React.Component {
         <div className="mini ui button repl-button" onClick={this.handleReply.bind(this)}>
           <i className="reply icon"></i>
         </div>
-        <div className="ui button" onClick={this.removeMessage.bind(this)}>
+        <div className="mini ui button" onClick={this.removeMessage.bind(this)}>
         Delete
         </div>
       </div>

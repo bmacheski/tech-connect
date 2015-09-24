@@ -9,17 +9,19 @@ class JobActions {
       'jobCreateSuccess',
       'updateTitle',
       'updateDescription',
-      'updateLocation'
+      'updateLocation',
+      'updateDate'
     )
   }
 
-  jobCreate(title, description, location, date, uid) {
+  jobCreate(title, description, location, pdate, jdate, uid) {
     axios
       .post('/api/job/create', {
         title: title,
         description: description,
         location: location,
-        date: date,
+        postDate: pdate,
+        jobDate: jdate,
         uid: uid // job creator ID
       })
       .then((data) => {

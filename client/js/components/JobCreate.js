@@ -6,7 +6,8 @@ import JobActions from '../actions/JobActions';
 import JobStore from '../stores/JobStore';
 import cookie from 'react-cookie';
 import moment from 'moment';
-import DayPicker from "react-day-picker";
+import DatePicker from "react-date-picker";
+import 'react-date-picker/index.css';
 
 class JobCreate extends React.Component {
   constructor(props) {
@@ -37,10 +38,11 @@ class JobCreate extends React.Component {
     let title = this.state.title;
     let description = this.state.description;
     let location = this.state.location;
-    let date = moment().format("dddd, MMMM Do YYYY");
+    let postDate = moment().format("dddd, MMMM Do YYYY");
+    let jobDate = moment(this.state.date).format("dddd, MMMM Do YYYY");
     let id = cookie.load('id');
-    if (title && description && location) {
-      JobActions.jobCreate(title, description, location, date, id);
+    if (title && description && location && postDate && jobDate) {
+      JobActions.jobCreate(title, description, location, postDate, jobDate, id);
     }
   }
 
@@ -52,6 +54,7 @@ class JobCreate extends React.Component {
           <i className="close icon" onClick={this.removeBox}></i>
           <p>{this.state.jobPostSuccessStatus}</p>
         </div>
+        <div className="title-loc">
          <div className="field">
             <label>Title</label>
             <input type="text"
@@ -69,6 +72,7 @@ class JobCreate extends React.Component {
               onChange={JobActions.updateLocation}>
             </input>
           </div>
+        </div>
           <div className="field">
             <label>Job Description</label>
             <textarea
@@ -76,6 +80,12 @@ class JobCreate extends React.Component {
               value={this.state.description}
               onChange={JobActions.updateDescription}>
             </textarea>
+          </div>
+          <div className="field">
+            <label>Job Date</label>
+            <DatePicker
+              date={this.state.date}
+              onChange={JobActions.updateDate}/>
           </div>
           <button className="ui submit button" type="submit">Submit Job</button>
         </form>

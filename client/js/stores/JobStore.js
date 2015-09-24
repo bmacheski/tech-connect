@@ -14,6 +14,7 @@ class JobStore {
     this.title = '';
     this.description = '';
     this.location = '';
+    this.date = '';
     this.jobPostStatus = '';
     this.hideState = 'hidden';
   }
@@ -25,6 +26,7 @@ class JobStore {
       title: '',
       description: '',
       location: '',
+      date: ''
     })
   }
 
@@ -38,6 +40,10 @@ class JobStore {
 
   onUpdateLocation(e) {
     this.location = e.target.value;
+  }
+
+  onUpdateDate(date) {
+    this.date = date[0];
   }
 }
 
