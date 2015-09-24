@@ -37,4 +37,12 @@ JobController.findCurrentJobs = function(req, res, next) {
   })
 }
 
+JobController.removeCurrentJob = function(req, res) {
+  var id = req.body.id;
+  Job.findOne({_id: id}, function(err, job) {
+    job.remove();
+    res.send({message: 'Job was sucessfully removed!', id: id})
+  })
+}
+
 module.exports = JobController;

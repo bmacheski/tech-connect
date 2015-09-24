@@ -1,10 +1,12 @@
 'use strict';
 
 import React from 'react';
+import JobCurrentActions from '../actions/JobsCurrentActions';
 
 class JobsCurrentItem extends React.Component {
   removeJob() {
-    console.log('job removed!')
+    var uid = this.props.job._id;
+    JobCurrentActions.removeCurrentJob(uid);
   }
 
   render() {
