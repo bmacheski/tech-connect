@@ -13,7 +13,6 @@ router.use('/', auth);
 router.post('/api/job/create', jobController.storeJob);
 router.get('/api/job/all', jobController.findJobs);
 router.get('/api/job/current', jobController.findCurrentJobs);
-router.post('/api/job/current', jobController.removeCurrentJob);
 
 // Technician routes
 router.get('/api/acceptjobs', techController.findAcceptedJobs)

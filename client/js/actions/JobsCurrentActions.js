@@ -6,8 +6,7 @@ import axios from 'axios';
 class JobsCurrentActions {
   constructor() {
     this.generateActions(
-      'fetchCurrentJobsSuccess',
-      'removeCurrentJobSuccess'
+      'fetchCurrentJobsSuccess'
     )
   }
 
@@ -16,16 +15,6 @@ class JobsCurrentActions {
       .get('/api/job/current')
       .then((data) => {
         this.actions.fetchCurrentJobsSuccess(data);
-      })
-  }
-
-  removeCurrentJob(id) {
-    axios
-      .post('/api/job/current', {
-        id: id
-      })
-      .then((data) => {
-        this.actions.removeCurrentJobSuccess(data);
       })
   }
 }
