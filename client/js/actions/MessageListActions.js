@@ -6,7 +6,8 @@ import axios from 'axios';
 class MessageListActions {
   constructor() {
     this.generateActions(
-      'fetchMessagesSuccess'
+      'fetchMessagesSuccess',
+      'removeMessageSuccess'
     )
   }
 
@@ -16,6 +17,16 @@ class MessageListActions {
       .then((res) => {
         this.actions.fetchMessagesSuccess(res)
       })
+  }
+
+  removeMessage(id) {
+    axios
+      .post('/api/job/message', {
+        mid: id
+      })
+      .then((data) => {
+        this.actions.removeMessageSuccess(data);
+     })
   }
 }
 

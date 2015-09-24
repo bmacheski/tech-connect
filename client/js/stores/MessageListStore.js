@@ -12,6 +12,11 @@ class MessageListStore {
   onFetchMessagesSuccess(res) {
     this.messages = res.data;
   }
+
+  onRemoveMessageSuccess(res) {
+    console.log(res.data)
+    this.messages = res.data;
+  }
 }
 
 export default alt.createStore(MessageListStore);

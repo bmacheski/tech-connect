@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import MessageListActions from '../actions/MessageListActions';
 
 class MessageListItem extends React.Component {
   handleReply() {
@@ -8,6 +9,12 @@ class MessageListItem extends React.Component {
     let senderId = this.props.message.senderId;
     router.transitionTo('message', {senderId: senderId});
   }
+
+  removeMessage() {
+    let mid = this.props.message._id
+    MessageListActions.removeMessage(mid);
+  }
+
   render() {
     return (
       <div className="item">
@@ -16,6 +23,9 @@ class MessageListItem extends React.Component {
         <div className="content"><span>Sent: </span>{this.props.message.date}</div>
         <div className="mini ui button repl-button" onClick={this.handleReply.bind(this)}>
           <i className="reply icon"></i>
+        </div>
+        <div className="ui button" onClick={this.removeMessage.bind(this)}>
+        Delete
         </div>
       </div>
     )

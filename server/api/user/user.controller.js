@@ -107,4 +107,17 @@ UserController.findRecievedMessages = function(req, res, done) {
   })
 }
 
+UserController.removeMessage = function(req, res) {
+  var id = req.cookies.id;
+  var mid = req.body.mid;
+  User.findOne({'_id': id}, function(err, user) {
+    if(err) {
+      return done(err);
+    }
+    user.recievedMessages.pull({_id: mid})
+    user.save();
+    res.send(user.recievedMessages);
+  })
+}
+
 module.exports = UserController;

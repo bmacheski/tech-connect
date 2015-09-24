@@ -6,6 +6,7 @@ import JobActions from '../actions/JobActions';
 import JobStore from '../stores/JobStore';
 import cookie from 'react-cookie';
 import moment from 'moment';
+import DayPicker from "react-day-picker";
 
 class JobCreate extends React.Component {
   constructor(props) {

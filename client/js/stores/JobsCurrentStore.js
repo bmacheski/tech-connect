@@ -14,5 +14,4 @@ class JobsCurrentStore {
   }
 }
 
-
 export default alt.createStore(JobsCurrentStore);

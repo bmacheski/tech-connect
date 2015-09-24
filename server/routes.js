@@ -22,5 +22,6 @@ router.post('/api/tech/job/accept', techController.acceptJob)
 // User related routes
 router.post('/api/user/message', userController.saveRecievedMessage)
 router.get('/api/user/message/all', userController.findRecievedMessages)
+router.post('/api/job/message', userController.removeMessage)
 
 module.exports = router;
