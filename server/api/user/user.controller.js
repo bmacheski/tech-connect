@@ -86,7 +86,7 @@ UserController.saveRecievedMessage = function(req, res, done) {
           console.log('error saving recieved message.')
         }
       })
-      res.sendStatus(200);
+      res.send({message: 'Your message was sent successfully!'})
     }
   })
 }

@@ -6,8 +6,8 @@ import axios from 'axios';
 class MessageActions {
   constructor() {
     this.generateActions(
-      'techMessageSuccess',
-      'updateMessage'
+      'updateMessage',
+      'messageSendSuccess'
     )
   }
 
@@ -18,8 +18,8 @@ class MessageActions {
         message: message,
         date: date
       })
-      .then(() => {
-        console.log('boomm!!!')
+      .then((res) => {
+        this.actions.messageSendSuccess(res)
       })
   }
 }

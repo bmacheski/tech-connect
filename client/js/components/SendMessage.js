@@ -3,6 +3,7 @@
 import React from 'react';
 import MessageStore from '../stores/MessageStore';
 import MessageActions from '../actions/MessageActions';
+import alt from '../utils/Alt';
 import moment from 'moment';
 
 class SendMessage extends React.Component {
@@ -24,6 +25,10 @@ class SendMessage extends React.Component {
     this.setState(state);
   }
 
+  removeBox() {
+    alt.recycle(MessageStore)
+  }
+
   submitMessage(e) {
     e.preventDefault()
     this.router = this.context.router
@@ -38,6 +43,10 @@ class SendMessage extends React.Component {
   render() {
     return (
       <div className="ui container holder">
+        <div className={this.state.hideState}>
+          <i className="close icon" onClick={this.removeBox}></i>
+          <p>{this.state.messageSendSuccessStatus}</p>
+        </div>
         <form className="ui fluid form" onSubmit={this.submitMessage.bind(this)}>
           <div className="field">
             <label>Message</label>
