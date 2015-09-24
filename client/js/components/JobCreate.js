@@ -27,13 +27,8 @@ class JobCreate extends React.Component {
     this.setState(state);
   }
 
-  // Clears the form when it is submitted
-  onSave() {
-    this.setState({
-      title: '',
-      description: '',
-      location: ''
-    })
+  removeBox() {
+    alt.recycle(JobStore)
   }
 
   saveJob(e) {
@@ -43,14 +38,19 @@ class JobCreate extends React.Component {
     let location = this.state.location;
     let date = moment().format("dddd, MMMM Do YYYY");
     let id = cookie.load('id');
-    JobActions.jobCreate(title, description, location, date, id);
-    this.onSave();
+    if (title && description && location) {
+      JobActions.jobCreate(title, description, location, date, id);
+    }
   }
 
   render() {
     return (
       <div className="ui container holder">
         <form className="ui fluid form" onSubmit={this.saveJob.bind(this)}>
+        <div className={this.state.hideState}>
+          <i className="close icon" onClick={this.removeBox}></i>
+          <p>{this.state.jobPostSuccessStatus}</p>
+        </div>
          <div className="field">
             <label>Title</label>
             <input type="text"

@@ -15,11 +15,17 @@ class JobStore {
     this.description = '';
     this.location = '';
     this.jobPostStatus = '';
+    this.hideState = 'hidden';
   }
 
-  onJobCreateSuccess(message) {
-    console.log(message);
-    this.jobPostStatus = message;
+  onJobCreateSuccess(res) {
+    this.jobPostSuccessStatus = res.data.message;
+    this.hideState = 'ui info message';
+    this.setState({
+      title: '',
+      description: '',
+      location: '',
+    })
   }
 
   onUpdateTitle(e) {

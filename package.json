@@ -36,7 +36,6 @@
     "react-cookie": "^0.3.4",
     "react-day-picker": "^1.0.5",
     "react-router": "^0.13.3",
-    "toastr": "^2.1.2",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.1"
   },

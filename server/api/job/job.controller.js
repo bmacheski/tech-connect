@@ -17,7 +17,7 @@ JobController.storeJob = function(req, res, done) {
     if (err) {
       return done(new Error(err));
     }
-    res.sendStatus(200)
+    res.send({message: 'Job was sucessfully created!'})
     return done(null, newJob);
   });
 };
