@@ -1,5 +1,7 @@
 var WebpackNotifierPlugin = require('webpack-notifier');
 var path                  = require('path');
+var webpack               = require("webpack");
+var BowerWebpackPlugin    = require('bower-webpack-plugin');
 
 module.exports = {
   entry: "./client/js/App.js",
@@ -29,6 +31,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new WebpackNotifierPlugin()
+    new WebpackNotifierPlugin(),
+    new BowerWebpackPlugin({
+      excludes: /.*\.less/
+    }),
+    new webpack.ProvidePlugin({
+      $:      "jquery",
+      jQuery: "jquery"
+    })
   ]
 };

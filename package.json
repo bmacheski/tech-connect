@@ -40,6 +40,7 @@
     "webpack": "^1.12.1"
   },
   "devDependencies": {
+    "bower-webpack-plugin": "^0.1.8",
     "node-sass": "^3.3.2",
     "sass-loader": "^2.0.1",
     "webpack-notifier": "^1.2.1"
