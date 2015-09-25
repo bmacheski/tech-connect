@@ -8,6 +8,7 @@ var JobSchema = new mongoose.Schema({
   location: String,
   postDate: String,
   jobDate: String,
+  status: String,
   uid: String
 });
 

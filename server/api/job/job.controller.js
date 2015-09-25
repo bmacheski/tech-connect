@@ -13,6 +13,7 @@ JobController.storeJob = function(req, res, done) {
   newJob.postDate    = req.body.postDate;
   newJob.jobDate     = req.body.jobDate;
   newJob.date        = req.body.date;
+  newJob.status      = 'Open';
   newJob.uid         = req.body.uid;
 
   newJob.save(function(err) {
@@ -36,6 +37,19 @@ JobController.findCurrentJobs = function(req, res, next) {
   var uid = req.cookies.id;
   Job.find({uid: uid}, function(err, jobs) {
     res.send(jobs);
+  })
+}
+
+JobController.updateJob = function(req, res) {
+  var id = req.body.jobId;
+  Job.findOne({_id: id}, function(err, job) {
+    if (job) {
+      job.status = 'Closed';
+      job.save(function() {
+        console.log('saved')
+      })
+    }
+    res.sendStatus(200);
   })
 }
 

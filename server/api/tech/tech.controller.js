@@ -53,7 +53,7 @@ TechController.findAcceptedJobs = function(req, res, done) {
     if (err) {
       return done(err);
     }
-    if(tech){
+    if (tech) {
       var jobs = tech.jobs;
       res.send(jobs);
     }
