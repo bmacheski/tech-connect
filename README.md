@@ -8,3 +8,10 @@ Tech Connect is an application to connect those in need of technical support wit
 * Node.js
 * Mongoose/MongoDB
 * Semantic UI
+
+## Setup
+
+  npm install
+  bower install
+  webpack
+  npm start
