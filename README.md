@@ -11,7 +11,7 @@ Tech Connect is an application to connect those in need of technical support wit
 
 ## Setup
 
-  npm install
-  bower install
-  webpack
-  npm start
+* npm install
+* bower install
+* webpack
+* npm start
