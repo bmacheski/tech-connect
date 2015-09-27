@@ -17,6 +17,7 @@ class MessageStore {
   onMessageSendSuccess(res) {
     this.messageSendSuccessStatus = res.data.message;
     this.hideState = 'ui info message';
+    this.message = '';
   }
 }
 

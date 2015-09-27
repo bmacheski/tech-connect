@@ -19,10 +19,6 @@ class JobListActions {
       })
   }
 
-  updateJobStatus(id) {
-    console.log('man')
-  }
-
   /**
    * ID refers to current logged in user (the tech) to
    * identify which tech profile the job needs to be saved
@@ -45,6 +41,9 @@ class JobListActions {
           .post('/api/job/update', {
               jobId: jobId
           })
+      })
+      .then((res) => {
+        console.log(res);
       })
   }
  }

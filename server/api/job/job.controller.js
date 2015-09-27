@@ -49,7 +49,7 @@ JobController.updateJob = function(req, res) {
         console.log('saved')
       })
     }
-    res.sendStatus(200);
+    res.send({message: 'Job was added successfully!'})
   })
 }
 
