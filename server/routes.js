@@ -14,6 +14,7 @@ router.post('/api/job/create', jobController.storeJob);
 router.post('/api/job/update', jobController.updateJob)
 router.get('/api/job/all', jobController.findJobs);
 router.get('/api/job/current', jobController.findCurrentJobs);
+router.get('/api/job/count', jobController.findJobCount);
 
 // Technician routes
 router.get('/api/acceptjobs', techController.findAcceptedJobs)

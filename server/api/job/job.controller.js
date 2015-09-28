@@ -53,4 +53,13 @@ JobController.updateJob = function(req, res) {
   })
 }
 
+JobController.findJobCount = function(req, res) {
+  Job.count({status: 'Open'}, function(err, count) {
+    if(err) {
+      return done(err)
+    }
+    res.send({count: count});
+  })
+}
+
 module.exports = JobController;

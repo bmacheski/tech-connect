@@ -23,7 +23,6 @@ TechController.acceptJob = function(req, res, done) {
           return done(new Error(err));
         }
       res.sendStatus(200);
-      return done(null, tech);
       })
     }
     // if technician doesn't have profile create profile & save job info
@@ -41,7 +40,6 @@ TechController.acceptJob = function(req, res, done) {
           return done(new Error(err));
         }
       res.sendStatus(200);
-      return done(null, newTech);
       });
     }
   })
