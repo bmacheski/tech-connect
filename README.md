@@ -15,3 +15,12 @@ Tech Connect is an application to connect those in need of technical support wit
 * bower install
 * webpack
 * npm start
+
+
+## Demo
+
+[tech-connect](https://tech-connect.herokuapp.com/#/)
+
+## License
+
+MIT
