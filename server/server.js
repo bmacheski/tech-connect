@@ -18,7 +18,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('appPath', config.root + 'client/public');
 
 app.use(express.static(path.join(config.root, 'client/public')));
-app.use('/bower_components', express.static(path.join(config.root, 'client/bower_components')));
+//app.use('/bower_components', express.static(path.join(config.root, 'client/bower_components')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());

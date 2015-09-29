@@ -6,7 +6,7 @@ import cookie from 'react-cookie';
 
 class JobListItem extends React.Component {
   acceptJob() {
-    let id = cookie.load('id');
+    let id = cookie.load("id");
     let jobId = this.props.job._id;
     let title = this.props.job.title;
     let description = this.props.job.description;

@@ -1,8 +1,9 @@
-var WebpackNotifierPlugin = require('webpack-notifier')
+var webpack               = require('webpack')
+  , WebpackNotifierPlugin = require('webpack-notifier')
   , path                  = require('path')
   , ResolverPlugin        = require("webpack/lib/ResolverPlugin");
 
-module.exports = {
+var config = {
   entry: "./client/js/App.js",
   output: {
     path: path.join(__dirname, '/client/public'),
@@ -36,6 +37,12 @@ module.exports = {
     }
   },
   plugins: [
-    new WebpackNotifierPlugin(),
+    new WebpackNotifierPlugin()
   ]
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
+module.exports = config;

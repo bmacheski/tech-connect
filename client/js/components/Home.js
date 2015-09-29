@@ -33,9 +33,9 @@ class Home extends React.Component {
           <h1><span>Welcome {name}!</span></h1>
           <h2 className="count-not">
            {this.state.count === 1 ?
-            'This is one new job!' :
+            "There is one new job!" :
             this.state.count > 1 ?
-            'There are ' + this.state.count + ' new jobs!' :
+            "There are " + this.state.count + " new jobs!" :
             "There aren't any new jobs just yet!"}
           </h2>
         </div>
