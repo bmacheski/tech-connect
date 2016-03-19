@@ -27,17 +27,23 @@ class AcceptJobList extends React.Component {
     this.setState(state)
   }
 
+  _renderAcceptedJobList() {
+    if (this.state.acceptedJobs.length) {
+      console.log(this.state.acceptedJobs)
+      return this.state.acceptedJobs.map((job) => {
+        return <AcceptJobListItem key={job._id} job={job} />
+      })
+    } else {
+      return <h2>You currently don't have any accepted jobs</h2>
+    }
+  }
+
   render() {
-    let acceptJobList = this.state.acceptedJobs.map((job) => {
-      return (
-        <AcceptJobListItem key= {job._id} job={job} />
-      )
-    })
     return (
       <div className="ui container holder">
         <div className="ui celled list accept-list">
           <h1>Accepted Jobs</h1>
-          {acceptJobList}
+          {this._renderAcceptedJobList()}
         </div>
       </div>
     )

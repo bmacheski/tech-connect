@@ -25,17 +25,24 @@ class JobList extends React.Component {
     this.setState(state);
   }
 
+  _renderJobList() {
+    let openJobs = this.state.jobs.filter((job) => { return job.status === 'Open' });
+
+    if (openJobs.length) {
+      return this.state.jobs.map((job) => {
+        return <JobListItem key= {job._id} job={job} />
+      })
+    } else {
+      return <h2>There aren't any available postings.</h2>
+    }
+  }
+
   render() {
-    let jobList = this.state.jobs.map((job) => {
-      return (
-        <JobListItem key= {job._id} job={job} />
-      )
-    })
     return (
       <div className="ui container holder">
         <div className="ui celled list">
           <h1>All Available Jobs</h1>
-          {jobList}
+          {this._renderJobList()}
         </div>
       </div>
     )

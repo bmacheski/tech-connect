@@ -13,16 +13,12 @@ var UserSchema = new mongoose.Schema({
     location: String
   }],
   recievedMessages: [{
-    name: String,
-    message: String,
-    date: String,
-    senderId: String
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Message'
   }],
-  // Technician specific profile data
-  isTech: Boolean,
-  bio: String,
-  location: String
+  isTech: { type: Boolean, default: false },  // **
+  bio: String,                                // * Technician specific profile data
+  location: String                            // */
 });
 
 module.exports = mongoose.model('User', UserSchema);
-

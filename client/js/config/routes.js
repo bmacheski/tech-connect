@@ -1,6 +1,5 @@
 'use strict';
 
- // <DefaultRoute name="home" handler={Landing} />
 import React from 'react';
 import Main from '../components/Main';
 import Landing from '../components/Landing';

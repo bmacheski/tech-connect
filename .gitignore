@@ -27,3 +27,6 @@ build/Release
 node_modules
 client/bower_components
 client/public/bundle.js
+
+client/public/*.svg
+client/public/*.ttf

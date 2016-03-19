@@ -27,10 +27,10 @@ class JobListActions {
    */
 
   acceptJob(id, jid, title, description, location, pid) {
-    let jobId = jid;
     axios
       .post('/api/tech/job/accept', {
         id: id,
+        jobId: jid,
         title: title,
         description: description,
         location: location,
@@ -39,7 +39,7 @@ class JobListActions {
       .then(() => {
         axios
           .post('/api/job/update', {
-              jobId: jobId
+              jobId: jid
           })
       })
       .then((res) => {

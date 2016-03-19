@@ -26,17 +26,28 @@ class MessageList extends React.Component {
   onChange(state) {
     this.setState(state);
   }
+
+  _renderMessagesList() {
+    if (this.state.messages.length) {
+      console.log(this.state.messages)
+      return this.state.messages.map((message) => {
+        return (
+          <MessageListItem
+            key={message._id}
+            message={message} />
+        )
+      })
+    } else {
+      return <h2> There are no messages in your inbox.</h2>
+    }
+  }
+
   render() {
-    let messageList = this.state.messages.map((message) => {
-      return (
-        <MessageListItem key={message._id} message={message} />
-      )
-    })
     return (
       <div className="ui container holder">
         <div className="ui celled list">
-          <h1> Current Messages </h1>
-          {messageList}
+          <h1>Current Messages</h1>
+          {this._renderMessagesList()}
         </div>
       </div>
     )

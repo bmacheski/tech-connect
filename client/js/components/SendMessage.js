@@ -31,10 +31,13 @@ class SendMessage extends React.Component {
 
   submitMessage(e) {
     e.preventDefault()
+
     this.router = this.context.router
+
     let sid = this.router.getCurrentParams().senderId;
     let date = moment().format("dddd, MMMM Do YYYY");
     let message = this.state.message;
+
     if (message) {
       MessageActions.sendMessage(sid, message, date)
     }
@@ -44,10 +47,15 @@ class SendMessage extends React.Component {
     return (
       <div className="ui container holder">
         <div className={this.state.hideState}>
-          <i className="close icon" onClick={this.removeBox}></i>
+          <i
+            className="close icon"
+            onClick={this.removeBox}>
+          </i>
           <p>{this.state.messageSendSuccessStatus}</p>
         </div>
-        <form className="ui fluid form" onSubmit={this.submitMessage.bind(this)}>
+        <form
+          className="ui fluid form"
+          onSubmit={this.submitMessage.bind(this)}>
           <div className="field">
             <label>Message</label>
             <textarea
@@ -56,7 +64,11 @@ class SendMessage extends React.Component {
               onChange={MessageActions.updateMessage}>
             </textarea>
           </div>
-          <button className="ui submit button" type="submit">Submit Message</button>
+          <button
+            className="ui submit button"
+            type="submit">
+            Submit Message
+          </button>
         </form>
       </div>
     )
