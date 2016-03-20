@@ -14,22 +14,21 @@ TechController.acceptJob = function(req, res, done) {
       if (tech) {
         tech.jobs.push(req.body.jobId);
         tech.save(function(err) {
-          if (err) { return done(new Error(err)); }
-          res.sendStatus(200);
+          if (err) { return done(err); }
         })
       }
 
       // if technician doesn't have profile create profile & save job info
       else {
         var newTech = new Tech();
-        newTech.uid = req.body.id
+        newTech.uid = req.body.id;
         newTech.jobs.push(req.body.jobId);
         newTech.save(function(err) {
-          if (err) { return done(new Error(err)); }
-          res.sendStatus(200);
+          if (err) { return done(err); }
         });
       }
     })
+    res.status(200).send({ message: 'Job accepted successfully.'})
 };
 
 TechController.findAcceptedJobs = function(req, res, done) {
@@ -38,11 +37,11 @@ TechController.findAcceptedJobs = function(req, res, done) {
   .populate('jobs')
   .exec(function(err, tech) {
       if (err) { return done(err); }
+
       if (tech) {
         res.status(200).send(tech.jobs);
-      }
-      else {
-        console.log('there are no jobs listed.');
+      } else {
+        console.log('There are no jobs listed.');
       }
   })
 }

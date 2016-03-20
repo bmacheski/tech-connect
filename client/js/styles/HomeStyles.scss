@@ -16,6 +16,7 @@ a {
   color: white;
   text-align: center;
   padding-top: 15%;
+  font-size: 38px;
 }
 
 .footer {
@@ -38,7 +39,7 @@ a {
   background-size: cover;
   width: 100%;
   margin: 0px !important;
-  height: 600px;
+  height: 100%;
 }
 
 .login-container {
@@ -50,6 +51,7 @@ a {
 }
 
 .login-register {
+  font-size: 18px;
   position: relative;
   left: 45%;
 }

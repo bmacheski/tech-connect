@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(cookie());
 
-// Connect Mongoose to Mongo database
+// Connect to db
 mongoose.connect(config.mongo.url);
 
 app.use(session({

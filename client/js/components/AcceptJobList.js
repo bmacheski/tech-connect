@@ -29,7 +29,6 @@ class AcceptJobList extends React.Component {
 
   _renderAcceptedJobList() {
     if (this.state.acceptedJobs.length) {
-      console.log(this.state.acceptedJobs)
       return this.state.acceptedJobs.map((job) => {
         return <AcceptJobListItem key={job._id} job={job} />
       })

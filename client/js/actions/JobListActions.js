@@ -7,7 +7,8 @@ class JobListActions {
   constructor() {
     this.generateActions(
       'fetchJobsSuccess',
-      'updateJobStatus'
+      'updateJobStatus',
+      'updateJobSuccess'
     )
   }
 
@@ -36,14 +37,15 @@ class JobListActions {
         location: location,
         pid: pid // poster/job creator ID
       })
-      .then(() => {
+      .then((res) => {
         axios
           .post('/api/job/update', {
-              jobId: jid
+            jobId: jid
           })
+          return res
       })
       .then((res) => {
-        console.log(res);
+        this.actions.updateJobSuccess(res);
       })
   }
  }

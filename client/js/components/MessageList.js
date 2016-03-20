@@ -29,7 +29,6 @@ class MessageList extends React.Component {
 
   _renderMessagesList() {
     if (this.state.messages.length) {
-      console.log(this.state.messages)
       return this.state.messages.map((message) => {
         return (
           <MessageListItem

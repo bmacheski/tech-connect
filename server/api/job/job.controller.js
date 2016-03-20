@@ -18,9 +18,9 @@ JobController.createJob = function(req, res, done) {
   newJob.uid         = req.body.uid;
 
   newJob.save(function(err) {
-    if (err) { return done(new Error(err)); }
+    if (err) { return done(err); }
 
-    res.send({ message: 'Job was sucessfully created!' });
+    res.status(200).send({ message: 'Job sucessfully created!' });
 
     return done(null, newJob);
   });
@@ -55,7 +55,7 @@ JobController.updateJob = function(req, res) {
           console.log('job upated.')
         })
       }
-      res.send({ message: 'Job was added successfully.' })
+      res.status(200).send({ message: 'Job was added successfully.' })
     })
 }
 
@@ -63,7 +63,8 @@ JobController.findJobCount = function(req, res) {
   Job
     .count({ status: 'Open' }, function(err, count) {
       if (err) { return done(err); }
-      res.send({ count: count });
+
+      res.status(200).send({ count: count });
     })
 }
 

@@ -14,7 +14,6 @@ class MessageListStore {
   }
 
   onRemoveMessageSuccess(res) {
-    console.log(res.data)
     this.messages = res.data;
   }
 }

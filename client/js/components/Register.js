@@ -34,6 +34,7 @@ class Register extends React.Component {
     let location = this.state.location;
     let bio = this.state.bio;
     let router = this.context.router;
+
     TechProfileActions.createProfile(id, location, bio);
     router.transitionTo('home');
   }
@@ -41,7 +42,9 @@ class Register extends React.Component {
   render() {
     return (
       <div className="ui container holder">
-        <form className="ui fluid form" onSubmit={this.saveProfile.bind(this)}>
+        <form
+          className="ui fluid form"
+          onSubmit={this.saveProfile.bind(this)}>
           <div className="field">
             <label>Location</label>
             <input
@@ -60,7 +63,10 @@ class Register extends React.Component {
               onChange={TechProfileActions.updateBio}>
             </textarea>
           </div>
-          <button className="ui submit button" type="submit">Register</button>
+          <button
+            className="ui submit button"
+            type="submit">Register
+          </button>
         </form>
       </div>
     )

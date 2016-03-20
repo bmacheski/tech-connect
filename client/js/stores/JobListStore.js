@@ -7,10 +7,17 @@ class JobListStore {
   constructor() {
     this.bindActions(JobListActions);
     this.jobs = [];
+    this.acceptJobMessage = '';
+    this.hideState = 'hidden';
   }
 
   onFetchJobsSuccess(res) {
     this.jobs = res.data;
+  }
+
+  onUpdateJobSuccess(res) {
+    this.hideState = 'ui info message';
+    this.acceptJobMessage = res.data.message;
   }
 }
 

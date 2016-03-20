@@ -14,7 +14,7 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     let id = cookie.load('id');
-    let data = {id: id};
+    let data = { id: id };
     UserStore.listen(this.onChange);
     UserActions.setCurrentUser(data);
   }
@@ -37,7 +37,8 @@ class Navbar extends React.Component {
   render() {
     let id = cookie.load('id');
     let isTech = cookie.load('isTech');
-    // All unauth users
+
+    // Unauthenticated users navigation view
     if (id === undefined) {
       return (
         <div className="ui inverted menu navbar page grid">
@@ -52,7 +53,7 @@ class Navbar extends React.Component {
         </div>
       )
     }
-    // Technicians
+    // Technicians navigation view
     if (id !== undefined && isTech === true) {
       return (
         <div className="ui inverted menu navbar page grid">
