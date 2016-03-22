@@ -2,16 +2,9 @@
 
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
   , passport       = require('passport')
-  , config         = require('../config/development')
   , User           = require('../db/user.model')
-  , UserController = require('../api/user/user.controller');
-
-if (process.env.NODE_ENV !== 'production') {
-  var config = require('../config/development')
-}
-else {
-  var config = require('../config/production')
-}
+  , UserController = require('../api/user/user.controller')
+  , config         = require('../config/environment')();
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);

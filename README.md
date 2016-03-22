@@ -1,13 +1,19 @@
 ## tech-connect
 
 Tech Connect is an application to connect those in need of technical support with IT professionals.
+Users who would like to apply for jobs can register as technicians. They will then be able to view job postings that regular users submit and will then be able to initiate communication with clients.
+
+## Demo
+
+[tech-connect](https://node-techconnect.herokuapp.com)
 
 ## Tech Stack
 
-* React/Flux(Alt)
-* Node.js
-* Mongoose/MongoDB
-* Semantic UI
+- [x] React
+- [x] Flux(Alt)
+- [x] Express
+- [x] Mongoose / MongoDB
+- [x] Semantic UI
 
 ## Setup
 
@@ -15,11 +21,6 @@ Tech Connect is an application to connect those in need of technical support wit
 * bower install
 * webpack
 * npm start
-
-
-## Demo
-
-[tech-connect](https://tech-connect.herokuapp.com/#/)
 
 ## License
 

@@ -9,9 +9,8 @@ module.exports = {
     url: 'mongodb://localhost:27017/techTest',
   },
   google: {
-    'clientID': '1078873529481-id12h901lcl7geqendql0l46bv712g3b.apps.googleusercontent.com',
-    'clientSecret': 'HGCJiHAY2YY9Cgl7hqwaqcbI',
-    'callbackURL': "http://127.0.0.1:3000/auth/google/callback"
+    'clientID': '278816631764-ukaocbeaqs90h8p2lrjroaik4ponup4l.apps.googleusercontent.com',
+    'clientSecret': 'q0fC7hO7QAJ9-9UVyxa6hGgY',
+    'callbackURL': "http://localhost:3000/auth/google/callback"
   }
 };
-

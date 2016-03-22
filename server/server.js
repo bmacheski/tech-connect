@@ -11,14 +11,9 @@ var express     = require('express')
   , MongoStore  = require('connect-mongo')(session)
   , routes      = require('./routes')
   , cors        = require('./config/cors')
+  , config      = require('./config/environment')()
   , app         = express()
   , server      = require('http').createServer(app);
-
-if (process.env.NODE_ENV !== 'production') {
-  var config = require('./config/development');
-} else {
-  var config = require('./config/production');
-}
 
 app.set('port', process.env.PORT || 3000);
 app.set('appPath', config.root + 'client/public');
