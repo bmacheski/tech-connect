@@ -24,11 +24,11 @@ UserController.signIn = function(profile, done, token) {
 
         // Save new user info to database
       } else {
-        var newUser    = new User();
-        newUser.gid    = profile._json.id;
-        newUser.token  = token;
-        newUser.name   = profile._json.displayName;
-        newUser.email  = profile._json.emails[0].value;
+        var newUser   = new User();
+        newUser.gid   = profile._json.id;
+        newUser.token = token;
+        newUser.name  = profile._json.displayName;
+        newUser.email = profile._json.emails[0].value;
 
         newUser.save(function(err) {
           if (err) { return done(new Error(err)); }
@@ -41,6 +41,7 @@ UserController.signIn = function(profile, done, token) {
 /**
  * Users registering as technicians
  */
+
 UserController.registerAsTech = function(req, res, done) {
   var uid = req.body.id;
 

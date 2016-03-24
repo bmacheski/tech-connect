@@ -3,11 +3,6 @@
 import alt from '../utils/Alt';
 import JobActions from '../actions/JobActions';
 
-/**
- * BindActions is an Alt method which takes in an object of action symbols and binds them to
- * their specially named handlers
- */
-
 class JobStore {
   constructor() {
     this.bindActions(JobActions);

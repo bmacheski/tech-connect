@@ -4,9 +4,11 @@ import React from 'react';
 import alt from '../utils/Alt';
 import JobActions from '../actions/JobActions';
 import JobStore from '../stores/JobStore';
+import UserStore from '../stores/UserStore';
 import cookie from 'react-cookie';
 import moment from 'moment';
 import DatePicker from "react-date-picker";
+
 import 'react-date-picker/index.css';
 
 class JobCreate extends React.Component {
@@ -35,12 +37,14 @@ class JobCreate extends React.Component {
 
   saveJob(e) {
     e.preventDefault();
+
     let title = this.state.title;
     let description = this.state.description;
     let location = this.state.location;
     let postDate = moment().format("dddd, MMMM Do YYYY");
     let jobDate = moment(this.state.date).format("dddd, MMMM Do YYYY");
-    let id = cookie.load('id');
+    let id = UserStore.getState().user.id;
+
     if (title && description && location && postDate && jobDate) {
       JobActions.jobCreate(title, description, location, postDate, jobDate, id);
     }

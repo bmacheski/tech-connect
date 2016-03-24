@@ -30,16 +30,16 @@ class SendMessage extends React.Component {
   }
 
   submitMessage(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    this.router = this.context.router
+    this.router = this.context.router;
 
     let sid = this.router.getCurrentParams().senderId;
     let date = moment().format("dddd, MMMM Do YYYY");
     let message = this.state.message;
 
     if (message) {
-      MessageActions.sendMessage(sid, message, date)
+      MessageActions.sendMessage(sid, message, date);
     }
   }
 

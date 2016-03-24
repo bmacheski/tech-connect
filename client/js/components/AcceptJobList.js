@@ -4,6 +4,7 @@ import React from 'react';
 import AcceptJobListItem from './AcceptJobListItem';
 import AcceptJobListActions from '../actions/AcceptJobListActions';
 import AcceptJobListStore from '../stores/AcceptJobListStore';
+import UserStore from '../stores/UserStore';
 import cookie from 'react-cookie';
 
 class AcceptJobList extends React.Component {
@@ -14,7 +15,8 @@ class AcceptJobList extends React.Component {
   }
 
   componentWillMount() {
-    let id = cookie.load('id')
+    let id = UserStore.getState().user.id
+    // let id = cookie.load('id')
     AcceptJobListStore.listen(this.onChange);
     AcceptJobListActions.fetchAllJobs(id);
   }

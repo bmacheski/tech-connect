@@ -33,7 +33,7 @@ TechController.acceptJob = function(req, res, done) {
 
 TechController.findAcceptedJobs = function(req, res, done) {
   Tech
-  .findOne({ 'uid' : req.cookies.id })
+  .findOne({ uid: req.params.id })
   .populate('jobs')
   .exec(function(err, tech) {
       if (err) { return done(err); }

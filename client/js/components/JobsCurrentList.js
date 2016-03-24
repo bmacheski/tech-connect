@@ -25,23 +25,24 @@ class JobsCurrent extends React.Component {
     this.setState(state);
   }
 
-  _renderJobsCurrentList() {
-    if (this.state.currentJobs.length) {
-      return this.state.currentJobs.map((job) => {
-        return <JobsCurrentItem key={job._id} job={job} />
-      })
-    } else {
-      return <h2>There are currently no posted jobs.</h2>
+  renderJobsCurrentList() {
+    { return this.state.currentJobs.length ?
+      (
+        this.state.currentJobs.map((job) => {
+          return <JobsCurrentItem key={job._id} job={job} />
+        })
+      ) : (
+        <h2>There are currently no posted jobs.</h2>
+      )
     }
   }
 
   render() {
-
     return (
       <div className="ui container holder">
         <div className="ui celled list">
           <h1> My Currently Available Jobs</h1>
-          {this._renderJobsCurrentList()}
+          {this.renderJobsCurrentList()}
         </div>
       </div>
     )
@@ -49,5 +50,3 @@ class JobsCurrent extends React.Component {
 };
 
 export default JobsCurrent;
-
-

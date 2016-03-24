@@ -7,12 +7,22 @@ class UserActions {
   constructor() {
     this.generateActions(
       'setCurrentUser',
-      'removeCurrentUser'
+      'setUserDataSuccess',
+      'removeCurrentUserSuccess',
     )
   }
 
   setCurrentUser(user) {
     return user;
+  }
+
+  setUserData(data) {
+    let obj = { data: data }
+    this.actions.setUserDataSuccess(obj);
+  }
+
+  removeCurrentUser(cb) {
+    this.actions.removeCurrentUserSuccess(cb);
   }
 }
 

@@ -45,7 +45,10 @@ class JobListActions {
           return res
       })
       .then((res) => {
-        this.actions.updateJobSuccess(res);
+
+        let obj = { res: res, jid: jid };
+
+        this.actions.updateJobSuccess(obj);
       })
   }
  }

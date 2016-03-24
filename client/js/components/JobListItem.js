@@ -2,11 +2,12 @@
 
 import React from 'react';
 import JobListActions from '../actions/JobListActions';
+import UserStore from '../stores/UserStore';
 import cookie from 'react-cookie';
 
 class JobListItem extends React.Component {
   acceptJob() {
-    let id = cookie.load('id');
+    let id = UserStore.getState().user.id;
     let jobId = this.props.job._id;
     let title = this.props.job.title;
     let description = this.props.job.description;
@@ -17,8 +18,8 @@ class JobListItem extends React.Component {
   }
 
   render() {
-    if (this.props.job.status === 'Open') {
-      return (
+    { return this.props.job.status === 'Open' ?
+      (
         <div className="item">
           <div className="header">
             <span>Title:  </span>
@@ -41,15 +42,15 @@ class JobListItem extends React.Component {
             {this.props.job.status}
           </div>
           <div
-            className="tiny ui button repl-button"
+            className="medium ui button repl-button"
             onClick={this.acceptJob.bind(this)}>
             Add
           </div>
         </div>
+      ): (
+        <div />
       )
-  }
-    else
-      return <div />
+    }
   };
 }
 export default JobListItem;

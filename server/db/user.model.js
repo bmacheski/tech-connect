@@ -7,10 +7,14 @@ var UserSchema = new mongoose.Schema({
   token: String,
   name: String,
   email: String,
+  // postedJobs: [{
+  //   title: String,
+  //   description: String,
+  //   location: String
+  // }],
   postedJobs: [{
-    title: String,
-    description: String,
-    location: String
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Job'
   }],
   recievedMessages: [{
     type: mongoose.Schema.Types.ObjectId,

@@ -15,9 +15,12 @@ class JobListStore {
     this.jobs = res.data;
   }
 
-  onUpdateJobSuccess(res) {
+  onUpdateJobSuccess(obj) {
+    let i = obj.jid;
+    let index = this.jobs.map((j) => { return j._id }).indexOf(i)
+    this.jobs[index].status = 'Closed';
     this.hideState = 'ui info message';
-    this.acceptJobMessage = res.data.message;
+    this.acceptJobMessage = obj.res.data.message;
   }
 }
 

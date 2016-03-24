@@ -13,10 +13,10 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    let id = cookie.load('id');
-    let data = { id: id };
+    let user = cookie.load('user');
+
     UserStore.listen(this.onChange);
-    UserActions.setCurrentUser(data);
+    UserActions.setUserData(user);
   }
 
   componentWillUnmount() {
@@ -29,17 +29,19 @@ class Navbar extends React.Component {
 
   logout() {
     let router = this.context.router;
-    UserActions.removeCurrentUser();
-    cookie.remove('id');
-    router.transitionTo('login');
+
+    UserActions.removeCurrentUser(() => {
+      router.transitionTo('login');
+    });
   }
 
   render() {
-    let id = cookie.load('id');
-    let isTech = cookie.load('isTech');
+    let user = this.state.user ? this.state.user : '';
+    let id = user ? user.id : '';
+    let isTech = user ? user.isTech : '';
 
     // Unauthenticated users navigation view
-    if (id === undefined) {
+    if (!id) {
       return (
         <div className="ui inverted menu navbar page grid">
           <nav className="logo-container">
@@ -54,7 +56,7 @@ class Navbar extends React.Component {
       )
     }
     // Technicians navigation view
-    if (id !== undefined && isTech === true) {
+    if (id && isTech) {
       return (
         <div className="ui inverted menu navbar page grid">
           <nav className="logo-container">

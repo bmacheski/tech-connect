@@ -33,7 +33,7 @@ class MessageListItem extends React.Component {
           {this.props.message.date}
         </div>
         <div
-          className="mini ui button repl-button"
+          className="small ui button repl-button"
           onClick={this.handleReply.bind(this)}>
           <i className="reply icon"></i>
         </div>

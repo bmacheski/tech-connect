@@ -3,6 +3,7 @@
 import React from 'react';
 import HomeActions from '../actions/HomeActions';
 import HomeStore from '../stores/HomeStore';
+import UserStore from '../stores/UserStore';
 import cookie from 'react-cookie';
 
 class Home extends React.Component {
@@ -26,9 +27,13 @@ class Home extends React.Component {
   }
 
   render() {
-    let name = cookie.load('name');
-    if (cookie.load('isTech') === true) {
-      return (
+    // let userState = UserStore.getState().user;
+    // let name = userState.name;
+    // let isTech = userState.isTech;
+    let isTech = true;
+
+    { return isTech === true ?
+      (
         <div className="ui container holder">
           <h1><span>Welcome {name}!</span></h1>
           <h2 className="count-not">
@@ -39,11 +44,12 @@ class Home extends React.Component {
             "There aren't any new jobs just yet!"}
           </h2>
         </div>
+      ) : (
+        <div className="ui container holder">
+          <h1><span>Welcome {name}!</span></h1>
+        </div>
       )
     }
-    else return <div className="ui container holder">
-      <h1><span>Welcome {name}!</span></h1>
-    </div>
   }
 };
 

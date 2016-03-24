@@ -12,7 +12,7 @@ class AcceptJobListActions {
 
   fetchAllJobs(id) {
     axios
-      .get('/api/acceptjobs')
+      .get(`/api/acceptjobs/${id}`)
       .then((data) => {
         this.actions.fetchAllJobsSuccess(data);
       })

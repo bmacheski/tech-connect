@@ -30,6 +30,7 @@ class Register extends React.Component {
 
   saveProfile(e) {
     e.preventDefault();
+
     let id = cookie.load('id');
     let location = this.state.location;
     let bio = this.state.bio;

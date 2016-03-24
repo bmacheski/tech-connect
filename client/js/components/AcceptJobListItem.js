@@ -6,6 +6,7 @@ class AcceptJobListItem extends React.Component {
   handleSend() {
     let router = this.context.router;
     let senderId = this.props.job.uid;
+
     router.transitionTo('message', { senderId: senderId });
   }
 
@@ -25,7 +26,7 @@ class AcceptJobListItem extends React.Component {
           {this.props.job.location}
         </div>
         <div
-          className="tiny ui button repl-button"
+          className="medium ui button repl-button"
           onClick={this.handleSend.bind(this)}>
           Send User a Message
         </div>
