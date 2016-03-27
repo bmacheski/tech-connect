@@ -12,6 +12,7 @@ import JobCreate from '../components/JobCreate';
 import JobList from '../components/JobList';
 import AcceptJobList from '../components/AcceptJobList';
 import SendMessage from '../components/SendMessage';
+import Profile from '../components/Profile';
 import MessageList from '../components/MessageList';
 import { Router, DefaultRoute, Route } from 'react-router';
 
@@ -21,6 +22,7 @@ export default (
     <Route name="register" path="/login" handler={Login} />
     <Route name="home" path="/home" handler={Home} />
     <Route name="about" path="/about" handler={About} />
+    <Route name="profile" path="/profile" handler={Profile} />
     <Route name="techregister" path="/register/tech" handler={Register} />
     <Route name="createjob" path="/job/create" handler={JobCreate} />
     <Route name="currentjobs" path="/job/current" handler={JobsCurrentList} />

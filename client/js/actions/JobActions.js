@@ -4,6 +4,7 @@ import alt from '../utils/Alt';
 import axios from 'axios';
 
 class JobActions {
+
   constructor() {
     this.generateActions(
       'jobCreateSuccess',
@@ -14,7 +15,7 @@ class JobActions {
     )
   }
 
-  jobCreate(title, description, location, pdate, jdate, uid) {
+  jobCreate(title, description, location, pdate, jdate, email, cb) {
     axios
       .post('/api/job/create', {
         title: title,
@@ -22,10 +23,12 @@ class JobActions {
         location: location,
         postDate: pdate,
         jobDate: jdate,
-        uid: uid // job creator ID
+        email: email
       })
       .then((data) => {
-        this.actions.jobCreateSuccess(data);
+        let o = Object.assign({}, data, { fn: cb });
+
+        this.actions.jobCreateSuccess(o);
       })
   }
 }

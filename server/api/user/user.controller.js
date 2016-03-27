@@ -1,13 +1,14 @@
 'use strict';
 
-var User   = require('../../db/user.model')
- , Message = require('../../db/message.model');
+const User  = require('../../db/user.model')
+  , Message = require('../../db/message.model')
+  , Tech    = require('../../db/tech.model');
 
-var UserController = {};
+const UserController = {};
 
-UserController.signIn = function(profile, done, token) {
+UserController.signIn = (profile, done, token) => {
   User
-    .findOne({ 'gid': profile.id }, function(err, user) {
+    .findOne({ 'gid': profile.id }, (err, user) => {
       if (err) { return done(err); }
 
       if (user) {
@@ -15,23 +16,24 @@ UserController.signIn = function(profile, done, token) {
         user.name  = profile._json.displayName;
 
         // Save updated google info
-        user.save(function() {
-          if (err) {
-            console.log('error updating information');
-          }
-        })
-        return done(null, user);
+        user.save((err) => {
+          if (err) { return done(err); }
 
-        // Save new user info to database
+        })
+
+       return done(null, user);
+
+      // Save new user information
       } else {
-        var newUser   = new User();
+        let newUser   = new User();
         newUser.gid   = profile._json.id;
         newUser.token = token;
         newUser.name  = profile._json.displayName;
         newUser.email = profile._json.emails[0].value;
 
-        newUser.save(function(err) {
-          if (err) { return done(new Error(err)); }
+        newUser.save(err => {
+          if (err) { return done(err); }
+
           return done(null, newUser);
         });
       }
@@ -42,88 +44,91 @@ UserController.signIn = function(profile, done, token) {
  * Users registering as technicians
  */
 
-UserController.registerAsTech = function(req, res, done) {
-  var uid = req.body.id;
-
+UserController.registerAsTech = (req, res, done) => {
   User
-    .findOne({ '_id': uid }, function(err, user) {
+    .findOne({ 'email': req.body.email }, (err, user) => {
       if (err) { return done(err); }
 
       if (user) {
-        user.isTech   = true;
-        user.bio      = req.body.bio;
-        user.location = req.body.location;
-        user.save(function(err) {
-          if (err) {
-            console.log('error updating tech info')
-          }
+        user.is_tech  = true;
+
+        user.save(err => {
+          if (err) { return done(err); }
         })
-        res.cookie('isTech', user.isTech)
+
+        let tech      = new Tech();
+        tech.user_id  = user._id;
+        tech.bio      = req.body.bio;
+        tech.location = req.body.location;
+
+        tech.save(err => {
+          if (err) { return done(err); }
+        })
+
+        res.cookie('isTech', user.is_tech);
         res.sendStatus(200);
       } else {
-        console.log('User not found');
-        res.sendStatus(404);
+        res.status(403).send({ message: 'User not found.' });
       }
-  })
+    })
 }
 
-UserController.saveRecievedMessage = function(req, res, done) {
-  var uid = req.body.id;
-  var name = req.cookies.name;
-  var sid = req.cookies.id;
-
+UserController.saveReceivedMessage = function(req, res, done) {
   User
-    .findOne({ '_id': uid }, function(err, user) {
+    .findOne({ 'email': req.body.email }, (err, user) => {
       if (err) { return done(err); }
 
       if (user) {
-        var message = new Message();
-
-        message.name = name;
-        message.message = req.body.message;
-        message.date = req.body.date;
-        message.senderId = sid;
+        let message = new Message();
+        message.message   = req.body.message;
+        message.date      = req.body.date;
+        message.sender_id = req.body.sid;
         message.save();
 
-        user.recievedMessages.push(message._id);
-        user.save(function(err) {
-          if (err) {
-            console.log('error saving recieved message.')
-          }
+        user.received_messages.push(message._id);
+        user.save(err => {
+          if (err) { return done(err); }
         })
-        res.send({ message: 'Message was sent successfully.' })
+
+        res.send({ message: 'Message sent successfully.' })
       }
     })
 }
 
-UserController.findRecievedMessages = function(req, res, done) {
+UserController.findReceivedMessages = (req, res, done) => {
   User
-    .findOne({ '_id' : req.cookies.id })
-    .populate('recievedMessages')
-    .exec(function(err, user) {
+    .findOne({ 'email' : req.params.email })
+    .populate({
+      path: 'received_messages',
+      populate: {
+        path: 'sender_id',
+        select: 'name',
+        model: 'User'
+      }
+    })
+    .exec((err, user) => {
       if (err) { return done(err); }
 
       if (user) {
-        res.send(user.recievedMessages);
+        res.status(200).send(user.received_messages);
       } else {
-        console.log('there are no messages listed.')
+        res.status(200).send({ message: 'No messages listed.' });
       }
     })
 }
 
-UserController.removeMessage = function(req, res) {
-  var id = req.cookies.id;
-  var mid = req.body.mid;
-
+UserController.removeMessage = (req, res) => {
   User
-    .findOne({ '_id': id })
-    .populate('recievedMessages')
-    .exec(function(err, user) {
+    .findOne({ '_id': req.body.userId })
+    .exec((err, user) => {
       if (err) { return done(err); }
 
-      user.recievedMessages.pull({ _id: mid })
-      user.save();
-      res.send(user.recievedMessages);
+      user.received_messages.pull(req.body.mid)
+      user.save(err => {
+        if (err) { return done(err); }
+
+        res.sendStatus(200);
+      });
     })
 }
 

@@ -1,17 +1,14 @@
 'use strict';
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var TechnicianSchema = new mongoose.Schema({
-  // uid: String,
-  uid: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  jobs: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Job'
-  }]
+const TechnicianSchema = new mongoose.Schema({
+  bio: String,
+  location: String,
+  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  jobs: [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'Job' } // All jobs accepted by the technician
+  ]
 });
 
 module.exports = mongoose.model('Technician', TechnicianSchema);

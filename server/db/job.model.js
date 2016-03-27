@@ -1,19 +1,16 @@
 'use strict';
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var JobSchema = new mongoose.Schema({
+const JobSchema = new mongoose.Schema({
   title: String,
   description: String,
   location: String,
-  postDate: String,
-  jobDate: String,
+  post_date: String,
+  job_date: String,
+  posted_by: String,
   status: { type: String, default: 'Open' },
-  // uid: String
-  postedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }
+  accepted_by: { type: mongoose.Schema.Types.ObjectId, ref: 'Tech' }
 });
 
 module.exports = mongoose.model('Job', JobSchema);

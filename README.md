@@ -1,7 +1,6 @@
 ## tech-connect
 
-Tech Connect is an application to connect those in need of technical support with IT professionals.
-Users who would like to apply for jobs can register as technicians. They will then be able to view job postings that regular users submit and will then be able to initiate communication with clients.
+Tech Connect is an application to connect those in need of technical support with IT professionals. Users who would like to apply for jobs can register as technicians. They will then be able to view job postings that regular users submit and will then be able to initiate communication with clients.
 
 ## Demo
 
@@ -10,7 +9,7 @@ Users who would like to apply for jobs can register as technicians. They will th
 ## Tech Stack
 
 - [x] React
-- [x] Flux(Alt)
+- [x] Flux (Alt)
 - [x] Express
 - [x] Mongoose / MongoDB
 - [x] Semantic UI

@@ -1,52 +1,54 @@
 'use strict';
 
-var Job  = require('../../db/job.model')
-  , User = require('../../db/user.model');
+const Job  = require('../../db/job.model')
+  , User   = require('../../db/user.model');
 
-var JobController = {};
+const JobController = {};
 
 /**
  * Create and save submitted job.
  */
 
-JobController.createJob = function(req, res, done) {
-  var newJob         = new Job();
+JobController.createJob = (req, res, done) => {
+  let newJob         = new Job();
   newJob.title       = req.body.title
   newJob.description = req.body.description;
   newJob.location    = req.body.location;
-  newJob.postDate    = req.body.postDate;
-  newJob.jobDate     = req.body.jobDate;
+  newJob.post_date   = req.body.postDate;
+  newJob.job_date    = req.body.jobDate;
   newJob.date        = req.body.date;
-  newJob.uid         = req.body.uid;
+  newJob.posted_by   = req.body.email;
 
   User
-    .findById(req.body.uid)
+    .findOne({ email: req.body.email })
     .exec((err, user) => {
       if (err) { return done(err); }
 
-      user.postedJobs.push(newJob._id);
-      user.save();
+      user.posted_jobs.push(newJob._id);
+      user.save(err => {
+        if (err) { return done(err); }
+      });
     })
 
-  newJob.save(function(err) {
-    if (err) { return done(err); }
+    newJob.save(function(err) {
+      if (err) { return done(err); }
+
+      return done(null, newJob);
+    });
 
     res.status(200).send({ message: 'Job sucessfully created!' });
-
-    return done(null, newJob);
-  });
 };
 
 /**
  * Find all available jobs.
  */
 
-JobController.findJobs = function(req, res) {
+JobController.findJobs = (req, res) => {
   Job
-    .find({}, function(err, jobs) {
+    .find({}, (err, jobs) => {
       if (err) { return done(err); }
 
-      res.send(jobs);
+      res.status(200).send(jobs);
     })
 }
 
@@ -54,12 +56,12 @@ JobController.findJobs = function(req, res) {
  * Find all user (non-tech) posted jobs
  */
 
-JobController.findCurrentJobs = function(req, res, next) {
+JobController.findCurrentJobs = (req, res, next) => {
   Job
-    .find({ uid: req.cookies.id }, function(err, jobs) {
+    .find({ uid: req.cookies.id }, (err, jobs) => {
       if (err) { return done(err); }
 
-      res.send(jobs);
+      res.status(200).send(jobs);
     })
 }
 
@@ -72,14 +74,15 @@ JobController.updateJob = function(req, res) {
     .findOne({ _id: req.body.jobId }, function(err, job) {
       if (err) { return done(err); }
       if (job) {
-
         job.status = 'Closed';
 
-        job.save(function() {
-          console.log('job upated.')
+        job.save(err => {
+          if (err) { return done(err); }
+
+          res.status(200).send({ message: 'Job was added successfully.' })
         })
       }
-      res.status(200).send({ message: 'Job was added successfully.' })
+
     })
 }
 
@@ -87,9 +90,9 @@ JobController.updateJob = function(req, res) {
  * Find all open jobs count.
  */
 
-JobController.findJobCount = function(req, res) {
+JobController.findJobCount = (req, res) => {
   Job
-    .count({ status: 'Open' }, function(err, count) {
+    .count({ status: 'Open' }, (err, count) => {
       if (err) { return done(err); }
 
       res.status(200).send({ count: count });

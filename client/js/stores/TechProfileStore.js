@@ -4,18 +4,28 @@ import alt from '../utils/Alt';
 import TechProfileActions from '../actions/TechProfileActions';
 
 class TechProfileStore {
+
   constructor() {
     this.bindActions(TechProfileActions);
-    this.location = '';
-    this.bio = '';
+    this.profile = {}
+    this.editState = false;
   }
 
   onUpdateLocation(e) {
-    this.location = e.target.value;
+    this.profile.location = e.target.value;
   }
 
   onUpdateBio(e) {
-    this.bio = e.target.value;
+    this.profile.bio = e.target.value;
+  }
+
+  onToggleEdit() {
+    this.editState = !this.editState;
+  }
+
+  onFetchProfileSuccess(res) {
+    this.profile.location = res.data.location;
+    this.profile.bio = res.data.bio;
   }
 }
 

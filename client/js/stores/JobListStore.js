@@ -2,13 +2,14 @@
 
 import alt from '../utils/Alt';
 import JobListActions from '../actions/JobListActions';
+import toastr from 'toastr';
 
 class JobListStore {
+
   constructor() {
     this.bindActions(JobListActions);
     this.jobs = [];
     this.acceptJobMessage = '';
-    this.hideState = 'hidden';
   }
 
   onFetchJobsSuccess(res) {
@@ -17,10 +18,12 @@ class JobListStore {
 
   onUpdateJobSuccess(obj) {
     let i = obj.jid;
-    let index = this.jobs.map((j) => { return j._id }).indexOf(i)
+    let index = this.jobs.map((j) => { return j._id }).indexOf(i);
+
     this.jobs[index].status = 'Closed';
-    this.hideState = 'ui info message';
     this.acceptJobMessage = obj.res.data.message;
+
+    toastr.success(this.acceptJobMessage);
   }
 }
 

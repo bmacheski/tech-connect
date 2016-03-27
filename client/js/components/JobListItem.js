@@ -6,15 +6,16 @@ import UserStore from '../stores/UserStore';
 import cookie from 'react-cookie';
 
 class JobListItem extends React.Component {
+
   acceptJob() {
-    let id = UserStore.getState().user.id;
+    let email = UserStore.getState().user;
     let jobId = this.props.job._id;
     let title = this.props.job.title;
     let description = this.props.job.description;
     let location = this.props.job.location;
     let uid = this.props.job.uid;
 
-    JobListActions.acceptJob(id, jobId, title, description, location, uid);
+    JobListActions.acceptJob(email, jobId, title, description, location, uid);
   }
 
   render() {
@@ -22,8 +23,7 @@ class JobListItem extends React.Component {
       (
         <div className="item">
           <div className="header">
-            <span>Title:  </span>
-            {this.props.job.title}
+            <h2>{this.props.job.title}</h2>
           </div>
           <div className="content">
             <span>Description:  </span>

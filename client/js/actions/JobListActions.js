@@ -4,6 +4,7 @@ import alt from '../utils/Alt';
 import axios from 'axios';
 
 class JobListActions {
+
   constructor() {
     this.generateActions(
       'fetchJobsSuccess',
@@ -35,7 +36,7 @@ class JobListActions {
         title: title,
         description: description,
         location: location,
-        pid: pid // poster/job creator ID
+        pid: pid  /* poster/job creator ID */
       })
       .then((res) => {
         axios
@@ -45,7 +46,6 @@ class JobListActions {
           return res
       })
       .then((res) => {
-
         let obj = { res: res, jid: jid };
 
         this.actions.updateJobSuccess(obj);

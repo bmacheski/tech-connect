@@ -2,11 +2,14 @@
 
 import React from 'react';
 import MessageStore from '../stores/MessageStore';
+import MessageListStore from '../stores/MessageListStore';
+import UserStore from '../stores/UserStore';
 import MessageActions from '../actions/MessageActions';
 import alt from '../utils/Alt';
 import moment from 'moment';
 
 class SendMessage extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = MessageStore.getState();
@@ -34,25 +37,19 @@ class SendMessage extends React.Component {
 
     this.router = this.context.router;
 
-    let sid = this.router.getCurrentParams().senderId;
-    let date = moment().format("dddd, MMMM Do YYYY");
+    let senderId = this.router.getCurrentParams().senderId;
+    let date = moment().format('dddd, MMMM Do YYYY');
     let message = this.state.message;
+    let sid = UserStore.getState().user.id;
 
     if (message) {
-      MessageActions.sendMessage(sid, message, date);
+      MessageActions.sendMessage(senderId, message, date, sid);
     }
   }
 
   render() {
     return (
       <div className="ui container holder">
-        <div className={this.state.hideState}>
-          <i
-            className="close icon"
-            onClick={this.removeBox}>
-          </i>
-          <p>{this.state.messageSendSuccessStatus}</p>
-        </div>
         <form
           className="ui fluid form"
           onSubmit={this.submitMessage.bind(this)}>

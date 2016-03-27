@@ -4,6 +4,7 @@ import alt from '../utils/Alt';
 import axios from 'axios';
 
 class MessageListActions {
+
   constructor() {
     this.generateActions(
       'fetchMessagesSuccess',
@@ -11,21 +12,22 @@ class MessageListActions {
     )
   }
 
-  fetchMessages() {
+  fetchMessages(email) {
     axios
-      .get('/api/user/message/all')
+      .get(`/api/user/message/${email}`)
       .then((res) => {
         this.actions.fetchMessagesSuccess(res)
       })
   }
 
-  removeMessage(id) {
+  removeMessage(id, userId) {
     axios
       .post('/api/job/message', {
-        mid: id
+        mid: id,
+        userId: userId
       })
-      .then((data) => {
-        this.actions.removeMessageSuccess(data);
+      .then((res) => {
+        this.actions.removeMessageSuccess(id);
      })
   }
 }

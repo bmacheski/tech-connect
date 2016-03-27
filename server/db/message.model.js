@@ -1,12 +1,12 @@
 'use strict';
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var MessageSchema = new mongoose.Schema({
-  name: String,
+const MessageSchema = new mongoose.Schema({
   message: String,
   date: String,
-  senderId: String
+  status: { type: String, default: 'Unread' },
+  sender_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
 module.exports = mongoose.model('Message', MessageSchema);

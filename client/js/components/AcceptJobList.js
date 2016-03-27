@@ -7,7 +7,9 @@ import AcceptJobListStore from '../stores/AcceptJobListStore';
 import UserStore from '../stores/UserStore';
 import cookie from 'react-cookie';
 
+
 class AcceptJobList extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = AcceptJobListStore.getState();
@@ -15,10 +17,10 @@ class AcceptJobList extends React.Component {
   }
 
   componentWillMount() {
-    let id = UserStore.getState().user.id
-    // let id = cookie.load('id')
+    let email = UserStore.getState().user
+
     AcceptJobListStore.listen(this.onChange);
-    AcceptJobListActions.fetchAllJobs(id);
+    AcceptJobListActions.fetchAllJobs(email);
   }
 
   componentWillUnmount() {
@@ -26,16 +28,23 @@ class AcceptJobList extends React.Component {
   }
 
   onChange(state) {
-    this.setState(state)
+    this.setState(state);
   }
 
-  _renderAcceptedJobList() {
-    if (this.state.acceptedJobs.length) {
-      return this.state.acceptedJobs.map((job) => {
-        return <AcceptJobListItem key={job._id} job={job} />
-      })
-    } else {
-      return <h2>You currently don't have any accepted jobs</h2>
+  renderAcceptedJobList() {
+    { return this.state.acceptedJobs.length ?
+      (
+        this.state.acceptedJobs.map((job) => {
+          return (
+            <AcceptJobListItem
+              key={job._id}
+              job={job}
+            />
+          )
+        })
+      ) : (
+        <h2>You currently don't have any accepted jobs</h2>
+      )
     }
   }
 
@@ -43,8 +52,8 @@ class AcceptJobList extends React.Component {
     return (
       <div className="ui container holder">
         <div className="ui celled list accept-list">
-          <h1>Accepted Jobs</h1>
-          {this._renderAcceptedJobList()}
+          <h1 className="ui dividing header">Accepted Jobs</h1>
+          {this.renderAcceptedJobList()}
         </div>
       </div>
     )

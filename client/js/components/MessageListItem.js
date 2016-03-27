@@ -2,19 +2,22 @@
 
 import React from 'react';
 import MessageListActions from '../actions/MessageListActions';
+import UserStore from '../stores/UserStore';
 
 class MessageListItem extends React.Component {
+
   handleReply() {
     let router = this.context.router;
-    let senderId = this.props.message.senderId;
+    let senderId = this.props.message.senderId._id;
 
     router.transitionTo('message', { senderId: senderId });
   }
 
   removeMessage() {
     let mid = this.props.message._id;
+    let userId = UserStore.getState().user.id;
 
-    MessageListActions.removeMessage(mid);
+    MessageListActions.removeMessage(mid, userId);
   }
 
   render() {
@@ -22,7 +25,7 @@ class MessageListItem extends React.Component {
       <div className="item">
         <div className="header">
           <span>From:  </span>
-          {this.props.message.name}
+          {this.props.message.senderId.name}
         </div>
         <div className="content">
           <span>Message: </span>
@@ -33,12 +36,12 @@ class MessageListItem extends React.Component {
           {this.props.message.date}
         </div>
         <div
-          className="small ui button repl-button"
+          className="medium ui button repl-button"
           onClick={this.handleReply.bind(this)}>
           <i className="reply icon"></i>
         </div>
         <div
-          className="mini ui button"
+          className="medium ui button"
           onClick={this.removeMessage.bind(this)}>
           Delete
         </div>

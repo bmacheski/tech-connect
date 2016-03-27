@@ -3,31 +3,32 @@
 import alt from '../utils/Alt';
 import cookie from 'react-cookie';
 import UserActions from '../actions/UserActions';
+import toastr from 'toastr';
 
 class UserStore {
+
   constructor() {
     this.bindActions(UserActions);
     this.user = null;
-    // this.currentUser = { id: undefined };
+    this.isTech = false;
   }
 
-  onSetUserDataSuccess(obj) {
-    this.user = obj.data;
+  onSetUserDataSuccess(res) {
+    this.user = res.data;
+
+    if (res.isTech !== undefined) {
+      this.isTech = res.isTech;
+    }
   }
 
   onRemoveCurrentUserSuccess(cb) {
-    cookie.remove('user');
     this.user = null;
+
+    toastr.success('You have successfully logged out.')
+    cookie.remove('user');
+    cookie.remove('isTech');
     cb();
   }
-
-  // onSetCurrentUser(payload) {
-  //   this.currentUser = { id: payload.id };
-  // }
-
-  // onRemoveCurrentUser() {
-  //   this.currentUser = { id: undefined };
-  // }
 }
 
 export default alt.createStore(UserStore);

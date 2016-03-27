@@ -4,6 +4,7 @@ import alt from '../utils/Alt';
 import axios from 'axios';
 
 class MessageActions {
+
   constructor() {
     this.generateActions(
       'updateMessage',
@@ -11,12 +12,13 @@ class MessageActions {
     )
   }
 
-  sendMessage(id, message, date) {
+  sendMessage(id, message, date, sid) {
     axios
       .post('/api/user/message', {
         id: id,
         message: message,
-        date: date
+        date: date,
+        sid: sid
       })
       .then((res) => {
         this.actions.messageSendSuccess(res)

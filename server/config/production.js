@@ -1,14 +1,15 @@
 'use strict';
 
-var path = require('path');
-var MONGODB_USER = process.env.MONGOLAB_USER || 'username';
-var MONGODB_PASSWORD = process.env.MONGOLAB_PASS || 'password';
+const path = require('path');
+
+const MONGODB_USER = process.env.MONGOLAB_USER || 'username'
+  , MONGODB_PASS   = process.env.MONGOLAB_PASS || 'password';
 
 module.exports = {
   root: path.normalize(__dirname + '/../..'),
   sessionSecret: 'bmacmantechcon',
   mongo : {
-    url: process.env.MONGODB_URL || 'mongodb://' + MONGODB_USER + ':' + MONGODB_PASSWORD +
+    url: process.env.MONGODB_URL || 'mongodb://' + MONGODB_USER + ':' + MONGODB_PASS +
     '@ds021969.mlab.com:21969/tech-connect'
   },
   google: {

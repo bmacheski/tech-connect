@@ -3,9 +3,10 @@
 import React from 'react';
 
 class AcceptJobListItem extends React.Component {
+
   handleSend() {
     let router = this.context.router;
-    let senderId = this.props.job.uid;
+    let senderId = this.props.job.postedBy._id;
 
     router.transitionTo('message', { senderId: senderId });
   }
@@ -25,6 +26,18 @@ class AcceptJobListItem extends React.Component {
           <span>Location:  </span>
           {this.props.job.location}
         </div>
+         <div className="content">
+          <span>Post date:  </span>
+          {this.props.job.postDate}
+        </div>
+        <div className="content">
+          <span>Desired job date:  </span>
+          {this.props.job.jobDate}
+        </div>
+         <div className="content">
+          <span>Posted by:  </span>
+          {this.props.job.postedBy.name}
+        </div>
         <div
           className="medium ui button repl-button"
           onClick={this.handleSend.bind(this)}>
@@ -33,7 +46,7 @@ class AcceptJobListItem extends React.Component {
       </div>
     )
   }
-};
+}
 
 AcceptJobListItem.contextTypes = {
   router: React.PropTypes.func.isRequired

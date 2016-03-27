@@ -2,25 +2,41 @@
 
 import alt from '../utils/Alt';
 import axios from 'axios';
+import toastr from 'toastr';
 
 class TechProfileActions {
+
   constructor() {
     this.generateActions(
       'updateBio',
-      'updateLocation'
+      'updateLocation',
+      'toggleEdit',
+      'fetchProfileSuccess'
     )
   }
 
-  createProfile(id, location, bio) {
+  createProfile(email, location, bio) {
     axios
       .post('/api/tech/create', {
-        id: id,
+        email: email,
         bio: bio,
         location: location
       })
       .then(() => {
-        console.log('profile posted!');
+        toastr.success('You have successfully registered!')
       })
+  }
+
+  fetchProfile(email) {
+    axios
+      .get(`/api/tech/profile/${email}`)
+      .then(res => {
+        this.actions.fetchProfileSuccess(res);
+      })
+  }
+
+  toggleEdit() {
+    this.actions.toggleEdit();
   }
 }
 

@@ -3,9 +3,9 @@
 import React from 'react';
 import UserStore from '../stores/UserStore';
 import UserActions from '../actions/UserActions';
-import cookie from 'react-cookie';
 
 class Navbar extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = UserStore.getState();
@@ -13,10 +13,7 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    let user = cookie.load('user');
-
     UserStore.listen(this.onChange);
-    UserActions.setUserData(user);
   }
 
   componentWillUnmount() {
@@ -37,11 +34,10 @@ class Navbar extends React.Component {
 
   render() {
     let user = this.state.user ? this.state.user : '';
-    let id = user ? user.id : '';
-    let isTech = user ? user.isTech : '';
+    let isTech = this.state.isTech ? this.state.isTech : '';
 
     // Unauthenticated users navigation view
-    if (!id) {
+    if (!user) {
       return (
         <div className="ui inverted menu navbar page grid">
           <nav className="logo-container">
@@ -56,7 +52,7 @@ class Navbar extends React.Component {
       )
     }
     // Technicians navigation view
-    if (id && isTech) {
+    if (user && isTech) {
       return (
         <div className="ui inverted menu navbar page grid">
           <nav className="logo-container">
@@ -65,6 +61,7 @@ class Navbar extends React.Component {
           <div className="right menu">
             <a className="item" href="#/home">Home</a>
             <a className="item" href="#/about">About</a>
+            <a className="item" href="#/profile">Profile</a>
             <a className="item" href="#/job/list">View Jobs</a>
             <a className="item" href="#/job/accepted">Dashboard</a>
             <a className="item" href="#/user/messages">Messages</a>

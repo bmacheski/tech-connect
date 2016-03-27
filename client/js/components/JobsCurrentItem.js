@@ -4,12 +4,15 @@ import React from 'react';
 import JobsCurrentActions from '../actions/JobsCurrentActions';
 
 class JobsCurrentItem extends React.Component {
+
   render() {
     return (
       <div className="item">
         <div className="content">
+          <h3>
           <span>Title: </span>
           {this.props.job.title}
+          </h3>
         </div>
         <div className="content">
           <span>Description: </span>
@@ -21,11 +24,11 @@ class JobsCurrentItem extends React.Component {
         </div>
         <div className="content">
           <span>Date Posted: </span>
-          {this.props.job.postDate}
+          {this.props.job.post_date}
         </div>
         <div className="content">
           <span>Job Date: </span>
-          {this.props.job.jobDate}
+          {this.props.job.job_date}
         </div>
         <div className="content">
           <span>Status: </span>

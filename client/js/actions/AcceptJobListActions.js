@@ -6,15 +6,20 @@ import axios from 'axios';
 class AcceptJobListActions {
   constructor() {
     this.generateActions(
-      'fetchAllJobsSuccess'
+      'fetchAllJobsSuccess',
+      'fetchAllJobsFailure',
+      'fetchProfileSuccess'
     )
   }
 
-  fetchAllJobs(id) {
+  fetchAllJobs(email) {
     axios
-      .get(`/api/acceptjobs/${id}`)
-      .then((data) => {
+      .get(`/api/acceptjobs/${email}`)
+      .then(data => {
         this.actions.fetchAllJobsSuccess(data);
+      })
+      .catch(err => {
+        this.actions.fetchAllJobsFailure(err);
       })
   }
 }

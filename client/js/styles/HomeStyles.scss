@@ -12,6 +12,7 @@ a {
   display: none;
 }
 
+
 .banner-title {
   color: white;
   text-align: center;
@@ -102,4 +103,14 @@ a {
 
 .ui.page.grid.main {
   margin-top: 70px;
+}
+
+form input, form textarea {
+  font-size: 1.10em !important;
+}
+
+.edit-profile {
+  float: right;
+  bottom: 50px;
+  position: relative;
 }

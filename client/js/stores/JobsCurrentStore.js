@@ -4,6 +4,7 @@ import alt from '../utils/Alt';
 import JobsCurrentActions from '../actions/JobsCurrentActions';
 
 class JobsCurrentStore {
+
   constructor() {
     this.bindActions(JobsCurrentActions);
     this.currentJobs = [];

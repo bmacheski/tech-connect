@@ -7,6 +7,7 @@ import JobListItem from './JobListItem';
 import alt from '../utils/Alt';
 
 class JobList extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = JobListStore.getState();
@@ -26,31 +27,28 @@ class JobList extends React.Component {
     this.setState(state);
   }
 
-  _closeBox() {
-    alt.recycle(JobListStore)
-  }
-
   _renderJobList() {
     let openJobs = this.state.jobs.filter((job) => { return job.status === 'Open' });
 
-    if (openJobs.length) {
-      return this.state.jobs.map((job) => {
-        return <JobListItem key= {job._id} job={job} />
+    { return openJobs.length ?
+      (
+      this.state.jobs.map(job => {
+        return (
+          <JobListItem
+            key= {job._id}
+            job={job}
+          />
+        )
       })
-    } else {
-      return <h2>There aren't any available postings.</h2>
+      ) : (
+      <h2>There aren't any available postings. Check back later.</h2>
+      )
     }
   }
 
   render() {
     return (
       <div className="ui container holder">
-        <div className={this.state.hideState}>
-          <i
-            className="close icon"
-            onClick={this._closeBox}></i>
-          <p>{this.state.acceptJobMessage}</p>
-        </div>
         <div className="ui celled list">
           <h1>All Available Jobs</h1>
           {this._renderJobList()}

@@ -1,10 +1,10 @@
 'use strict';
 
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
-  , passport       = require('passport')
-  , User           = require('../db/user.model')
-  , UserController = require('../api/user/user.controller')
-  , config         = require('../config/environment')();
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
+  , passport         = require('passport')
+  , User             = require('../db/user.model')
+  , UserController   = require('../api/user/user.controller')
+  , config           = require('../config/environment')();
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);

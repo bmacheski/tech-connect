@@ -2,8 +2,10 @@
 
 import alt from '../utils/Alt';
 import JobActions from '../actions/JobActions';
+import toastr from 'toastr';
 
 class JobStore {
+
   constructor() {
     this.bindActions(JobActions);
     this.title = '';
@@ -11,18 +13,19 @@ class JobStore {
     this.location = '';
     this.date = '';
     this.jobPostStatus = '';
-    this.hideState = 'hidden';
   }
 
   onJobCreateSuccess(res) {
     this.jobPostSuccessStatus = res.data.message;
-    this.hideState = 'ui info message';
     this.setState({
       title: '',
       description: '',
       location: '',
       date: ''
     })
+
+    toastr.success(res.data.message);
+    res.fn();
   }
 
   onUpdateTitle(e) {
@@ -38,7 +41,7 @@ class JobStore {
   }
 
   onUpdateDate(date) {
-    this.date = date[0];
+    this.date = date
   }
 }
 

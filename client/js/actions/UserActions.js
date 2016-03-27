@@ -4,6 +4,7 @@ import alt from '../utils/Alt';
 import axios from 'axios';
 
 class UserActions {
+
   constructor() {
     this.generateActions(
       'setCurrentUser',
@@ -12,12 +13,9 @@ class UserActions {
     )
   }
 
-  setCurrentUser(user) {
-    return user;
-  }
+  setUserData(data, tech) {
+    let obj = { data: data, isTech: tech }
 
-  setUserData(data) {
-    let obj = { data: data }
     this.actions.setUserDataSuccess(obj);
   }
 

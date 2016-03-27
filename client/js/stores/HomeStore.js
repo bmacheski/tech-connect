@@ -4,6 +4,7 @@ import alt from '../utils/Alt';
 import HomeActions from '../actions/HomeActions';
 
 class HomeStore {
+
   constructor() {
     this.bindActions(HomeActions);
     this.count = '';

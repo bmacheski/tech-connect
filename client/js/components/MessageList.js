@@ -3,10 +3,12 @@
 import React from 'react';
 import MessageListActions from '../actions/MessageListActions';
 import MessageListStore from '../stores/MessageListStore';
+import UserStore from '../stores/UserStore';
 import MessageListItem from './MessageListItem';
 import cookie from 'react-cookie';
 
 class MessageList extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = MessageListStore.getState();
@@ -14,9 +16,10 @@ class MessageList extends React.Component {
   }
 
   componentWillMount() {
-    let id = cookie.load('id')
+    let email = UserStore.getState().user;
+
     MessageListStore.listen(this.onChange);
-    MessageListActions.fetchMessages();
+    MessageListActions.fetchMessages(email);
   }
 
   componentWillUnmount() {
@@ -27,17 +30,20 @@ class MessageList extends React.Component {
     this.setState(state);
   }
 
-  _renderMessagesList() {
-    if (this.state.messages.length) {
-      return this.state.messages.map((message) => {
-        return (
-          <MessageListItem
-            key={message._id}
-            message={message} />
-        )
-      })
-    } else {
-      return <h2> There are no messages in your inbox.</h2>
+  renderMessagesList() {
+    { return this.state.messages.length ?
+      (
+        this.state.messages.map((message) => {
+          return (
+            <MessageListItem
+              key={message._id}
+              message={message}
+            />
+          )
+        })
+      ) : (
+        <h2> There are no messages in your inbox.</h2>
+      )
     }
   }
 
@@ -46,7 +52,7 @@ class MessageList extends React.Component {
       <div className="ui container holder">
         <div className="ui celled list">
           <h1>Current Messages</h1>
-          {this._renderMessagesList()}
+          {this.renderMessagesList()}
         </div>
       </div>
     )

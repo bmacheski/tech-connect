@@ -7,6 +7,7 @@ import UserStore from '../stores/UserStore';
 import cookie from 'react-cookie';
 
 class Home extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = HomeStore.getState();
@@ -27,10 +28,8 @@ class Home extends React.Component {
   }
 
   render() {
-    // let userState = UserStore.getState().user;
-    // let name = userState.name;
-    // let isTech = userState.isTech;
-    let isTech = true;
+    let userState = UserStore.getState().user;
+    let isTech = userState.isTech;
 
     { return isTech === true ?
       (
@@ -46,11 +45,13 @@ class Home extends React.Component {
         </div>
       ) : (
         <div className="ui container holder">
-          <h1><span>Welcome {name}!</span></h1>
+          <h1><span>Welcome!</span></h1>
+          <h1>If you need to have anything fixed head on over and post a job so that
+          a technician will be able to help!</h1>
         </div>
       )
     }
   }
-};
+}
 
 export default Home;
