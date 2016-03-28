@@ -11,12 +11,11 @@ import '../styles/HomeStyles.scss';
 
 class Main extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     let user = cookie.load('user');
     let isTech = cookie.load('isTech')
 
     UserActions.setUserData(user, isTech);
-
   }
 
   render() {

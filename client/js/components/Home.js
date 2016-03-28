@@ -29,7 +29,7 @@ class Home extends React.Component {
 
   render() {
     let userState = UserStore.getState().user;
-    let isTech = userState.isTech;
+    let isTech = userState && userState.isTech ? userState.isTech : ''
 
     { return isTech === true ?
       (

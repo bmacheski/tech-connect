@@ -65,6 +65,16 @@ JobController.findCurrentJobs = (req, res, next) => {
     })
 }
 
+JobController.removeJob = (req, res, next) => {
+  Job
+    .findByIdAndRemove(req.body.id)
+    .exec((err) => {
+      if (err) { return done(err); }
+
+      res.sendStatus(200);
+    })
+}
+
 /**
  * Update job with `closed` status.
  */

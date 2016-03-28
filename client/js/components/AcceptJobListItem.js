@@ -6,7 +6,7 @@ class AcceptJobListItem extends React.Component {
 
   handleSend() {
     let router = this.context.router;
-    let senderId = this.props.job.postedBy._id;
+    let senderId = this.props.job.posted_by;
 
     router.transitionTo('message', { senderId: senderId });
   }
@@ -28,15 +28,15 @@ class AcceptJobListItem extends React.Component {
         </div>
          <div className="content">
           <span>Post date:  </span>
-          {this.props.job.postDate}
+          {this.props.job.post_date}
         </div>
         <div className="content">
           <span>Desired job date:  </span>
-          {this.props.job.jobDate}
+          {this.props.job.job_date}
         </div>
          <div className="content">
           <span>Posted by:  </span>
-          {this.props.job.postedBy.name}
+          {this.props.job.posted_by}
         </div>
         <div
           className="medium ui button repl-button"

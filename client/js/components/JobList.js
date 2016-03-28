@@ -50,7 +50,7 @@ class JobList extends React.Component {
     return (
       <div className="ui container holder">
         <div className="ui celled list">
-          <h1>All Available Jobs</h1>
+          <h1 className="ui dividing header">All Available Jobs</h1>
           {this._renderJobList()}
         </div>
       </div>

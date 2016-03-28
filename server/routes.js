@@ -13,6 +13,7 @@ router.use('/', auth);
 // Job routes
 router.post('/api/job/create', jobController.createJob);
 router.post('/api/job/update', jobController.updateJob)
+router.post('/api/job/remove', jobController.removeJob);
 router.get('/api/job/all', jobController.findJobs);
 router.get('/api/job/current', jobController.findCurrentJobs);
 router.get('/api/job/count', jobController.findJobCount);
@@ -20,6 +21,7 @@ router.get('/api/job/count', jobController.findJobCount);
 // Technician routes
 router.get('/api/acceptjobs/:email', techController.findAcceptedJobs)
 router.get('/api/tech/profile/:email', techController.findProfile)
+router.put('/api/tech/profile/:email', techController.updateProfile)
 router.post('/api/tech/create', userController.registerAsTech);
 router.post('/api/tech/job/accept', techController.acceptJob)
 

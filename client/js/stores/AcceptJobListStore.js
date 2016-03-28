@@ -2,6 +2,7 @@
 
 import alt from '../utils/Alt';
 import AcceptJobListActions from '../actions/AcceptJobListActions';
+import toastr from 'toastr';
 
 class AcceptJobListStore {
 
@@ -15,7 +16,7 @@ class AcceptJobListStore {
   }
 
   onFetchAllJobsFailure(err) {
-    toastr.error(err)
+    toastr.error(err);
   }
 }
 

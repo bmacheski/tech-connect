@@ -14,16 +14,21 @@ class Profile extends React.Component {
     this.state = TechProfileStore.getState();
     this.toggleEdit = this.toggleEdit.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.updateProfile = this.updateProfile.bind(this);
   }
 
   componentWillMount() {
-    let email = UserStore.getState().user
+    let email = UserStore.getState().user;
 
     TechProfileStore.listen(this.onChange);
-
-    if (!Object.keys(this.state.profile).length) {
+    console.log(this.state)
+    // if (!this.state.profile && !this.state.location) {
       TechProfileActions.fetchProfile(email);
-    }
+   // / }
+  }
+
+  componentWillUnmount() {
+    TechProfileStore.unlisten(this.onChange);
   }
 
   onChange(state) {
@@ -32,6 +37,16 @@ class Profile extends React.Component {
 
   toggleEdit() {
     TechProfileActions.toggleEdit();
+  }
+
+  updateProfile() {
+    let email = UserStore.getState().user;
+    let bio = this.state.profile.bio;
+    let location = this.state.profile.location;
+
+    TechProfileActions.updateProfile(email, bio, location, () => {
+      TechProfileActions.toggleEdit();
+    })
   }
 
   renderProfile() {
@@ -46,7 +61,8 @@ class Profile extends React.Component {
       return (
         <ProfileEdit
           profile={this.state.profile}
-          edit={this.toggleEdit}
+          cancel={this.toggleEdit}
+          edit={this.updateProfile}
           updateLocation={TechProfileActions.updateLocation}
           updateBio={TechProfileActions.updateBio}
         />

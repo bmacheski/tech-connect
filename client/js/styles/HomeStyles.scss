@@ -12,7 +12,6 @@ a {
   display: none;
 }
 
-
 .banner-title {
   color: white;
   text-align: center;
@@ -113,4 +112,20 @@ form input, form textarea {
   float: right;
   bottom: 50px;
   position: relative;
+}
+
+.message-container, .job-container {
+  display: inline;
+}
+
+.mas-read {
+  float: right;
+  position: relative;
+  bottom: 60px;
+}
+
+.job-remove {
+  float: right;
+  position: relative;
+  bottom: 80px;
 }

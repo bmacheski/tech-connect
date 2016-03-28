@@ -51,7 +51,7 @@ class MessageList extends React.Component {
     return (
       <div className="ui container holder">
         <div className="ui celled list">
-          <h1>Current Messages</h1>
+          <h1 className="ui dividing header">Current Messages</h1>
           {this.renderMessagesList()}
         </div>
       </div>

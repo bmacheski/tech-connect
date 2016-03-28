@@ -34,8 +34,8 @@ class Register extends React.Component {
     e.preventDefault();
 
     let email = UserStore.getState().user;
-    let location = this.state.location;
-    let bio = this.state.bio;
+    let location = this.state.profile.location;
+    let bio = this.state.profile.bio;
     let router = this.context.router;
 
     TechProfileActions.createProfile(email, location, bio);

@@ -11,7 +11,8 @@ class TechProfileActions {
       'updateBio',
       'updateLocation',
       'toggleEdit',
-      'fetchProfileSuccess'
+      'fetchProfileSuccess',
+      'updateProfileSuccess'
     )
   }
 
@@ -31,12 +32,24 @@ class TechProfileActions {
     axios
       .get(`/api/tech/profile/${email}`)
       .then(res => {
+        console.log(res);
         this.actions.fetchProfileSuccess(res);
       })
   }
 
   toggleEdit() {
     this.actions.toggleEdit();
+  }
+
+  updateProfile(email, bio, location, cb) {
+    axios
+      .put(`/api/tech/profile/${email}`, {
+        bio: bio,
+        location: location
+      })
+      .then(() => {
+        this.actions.updateProfileSuccess(cb);
+      })
   }
 }
 

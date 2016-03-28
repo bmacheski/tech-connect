@@ -4,6 +4,7 @@ import alt from '../utils/Alt';
 import axios from 'axios';
 
 class HomeActions {
+
   constructor() {
     this.generateActions(
       'fetchJobsCountSuccess'

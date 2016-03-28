@@ -26,12 +26,21 @@ class JobsCurrent extends React.Component {
     this.setState(state);
   }
 
+  removeCurrentJob(job) {
+    JobsCurrentActions.removeCurrentJob(job._id);
+  }
+
   renderJobsCurrentList() {
-    console.log(this.state.currentJobs)
     { return this.state.currentJobs.length ?
       (
         this.state.currentJobs.map((job) => {
-          return <JobsCurrentItem key={job._id} job={job} />
+          return (
+            <JobsCurrentItem
+              key={job._id}
+              job={job}
+              removeJob={this.removeCurrentJob.bind(this, job)}
+            />
+          )
         })
       ) : (
         <h2>There are currently no posted jobs.</h2>
@@ -43,7 +52,7 @@ class JobsCurrent extends React.Component {
     return (
       <div className="ui container holder">
         <div className="ui celled list">
-          <h1> My Posted Jobs</h1>
+          <h1>My Posted Jobs</h1>
           {this.renderJobsCurrentList()}
         </div>
       </div>

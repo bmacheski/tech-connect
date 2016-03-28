@@ -28,10 +28,6 @@ class SendMessage extends React.Component {
     this.setState(state);
   }
 
-  removeBox() {
-    alt.recycle(MessageStore)
-  }
-
   submitMessage(e) {
     e.preventDefault();
 
@@ -40,7 +36,7 @@ class SendMessage extends React.Component {
     let senderId = this.router.getCurrentParams().senderId;
     let date = moment().format('dddd, MMMM Do YYYY');
     let message = this.state.message;
-    let sid = UserStore.getState().user.id;
+    let sid = UserStore.getState().user;
 
     if (message) {
       MessageActions.sendMessage(senderId, message, date, sid);

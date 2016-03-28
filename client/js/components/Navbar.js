@@ -33,8 +33,9 @@ class Navbar extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     let user = this.state.user ? this.state.user : '';
-    let isTech = this.state.isTech ? this.state.isTech : '';
+    let isTech = this.state && this.state.isTech ? this.state.isTech : '';
 
     // Unauthenticated users navigation view
     if (!user) {

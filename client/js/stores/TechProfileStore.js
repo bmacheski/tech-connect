@@ -2,6 +2,7 @@
 
 import alt from '../utils/Alt';
 import TechProfileActions from '../actions/TechProfileActions';
+import toastr from 'toastr';
 
 class TechProfileStore {
 
@@ -26,6 +27,11 @@ class TechProfileStore {
   onFetchProfileSuccess(res) {
     this.profile.location = res.data.location;
     this.profile.bio = res.data.bio;
+  }
+
+  onUpdateProfileSuccess(cb) {
+    setTimeout(cb, 0)
+    toastr.success('Profile updated successfully.')
   }
 }
 

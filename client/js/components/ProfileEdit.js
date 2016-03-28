@@ -12,17 +12,22 @@ class ProfileEdit extends React.Component {
           <button
             className="ui button edit-profile"
             onClick={this.props.edit}>
-            Edit Profile
+            Save Profile
+          </button>
+          <button
+            className="ui button edit-profile"
+            onClick={this.props.cancel}>
+            Cancel
           </button>
         </div>
         <div className="field">
           <h3>Bio</h3>
-          <input
+          <textarea
             type="text"
             className="field"
             value={this.props.profile.bio}
-            onChange={this.props.updateBio}
-          />
+            onChange={this.props.updateBio}>
+          </textarea>
         </div>
         <h3>Location</h3>
         <input

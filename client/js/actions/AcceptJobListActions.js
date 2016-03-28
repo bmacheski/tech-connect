@@ -4,6 +4,7 @@ import alt from '../utils/Alt';
 import axios from 'axios';
 
 class AcceptJobListActions {
+
   constructor() {
     this.generateActions(
       'fetchAllJobsSuccess',

@@ -2,6 +2,7 @@
 
 import alt from '../utils/Alt';
 import JobsCurrentActions from '../actions/JobsCurrentActions';
+import toastr from 'toastr';
 
 class JobsCurrentStore {
 
@@ -12,6 +13,11 @@ class JobsCurrentStore {
 
   onFetchCurrentJobsSuccess(res) {
     this.currentJobs = res.data;
+  }
+
+  onRemoveCurrentJobSuccess(id) {
+    this.currentJobs = this.currentJobs.filter((job) => { return job._id !== id });
+    toastr.success('Job removed successfully!')
   }
 }
 

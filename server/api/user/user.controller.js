@@ -75,11 +75,11 @@ UserController.registerAsTech = (req, res, done) => {
 
 UserController.saveReceivedMessage = function(req, res, done) {
   User
-    .findOne({ 'email': req.body.email }, (err, user) => {
+    .findOne({ 'email': req.body.id }, (err, user) => {
       if (err) { return done(err); }
 
       if (user) {
-        let message = new Message();
+        let message       = new Message();
         message.message   = req.body.message;
         message.date      = req.body.date;
         message.sender_id = req.body.sid;
@@ -99,12 +99,7 @@ UserController.findReceivedMessages = (req, res, done) => {
   User
     .findOne({ 'email' : req.params.email })
     .populate({
-      path: 'received_messages',
-      populate: {
-        path: 'sender_id',
-        select: 'name',
-        model: 'User'
-      }
+      path: 'received_messages'
     })
     .exec((err, user) => {
       if (err) { return done(err); }
@@ -119,7 +114,7 @@ UserController.findReceivedMessages = (req, res, done) => {
 
 UserController.removeMessage = (req, res) => {
   User
-    .findOne({ '_id': req.body.userId })
+    .findOne({ 'email': req.body.userId })
     .exec((err, user) => {
       if (err) { return done(err); }
 
