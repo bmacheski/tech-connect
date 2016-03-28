@@ -39,9 +39,6 @@ TechController.acceptJob = (req, res, done) => {
       })
       res.status(200).send({ message: 'Job accepted successfully.'})
     })
-
-  console.log(req.body)
-
 };
 
 TechController.findProfile = (req, res) => {
@@ -81,27 +78,18 @@ TechController.updateProfile = (req, res) => {
 }
 
 TechController.findAcceptedJobs = (req, res, done) => {
-  console.log(req.params.email)
   User
     .findOne({ email: req.params.email })
     .exec((err, user) => {
       if (err) { return done(err); }
       if (user) {
-        console.log(user)
-        console.log(user._id)
+
         Tech
           .findOne({ user_id: user._id })
           .populate({
-            path: 'jobs'//,
-            // populate: {
-            //   path: 'posted_by',
-            //   select: 'name',
-            //   model: 'User'
-            // }
+            path: 'jobs'
           })
           .exec((err, tech) => {
-            console.log('hereeee')
-            console.log(tech)
             if (err) { return done(err); }
 
             if (tech) {
@@ -115,25 +103,5 @@ TechController.findAcceptedJobs = (req, res, done) => {
       }
     })
 }
-  // Tech
-  //   .findOne({ email: req.params.email })
-  //   .populate({
-  //     path: 'jobs',
-  //     populate: {
-  //       path: 'posted_by',
-  //       select: 'name',
-  //       model: 'User'
-  //     }
-  //   })
-  //   .exec(function(err, tech) {
-  //     if (err) { return done(err); }
-
-  //     if (tech) {
-  //       res.status(200).send(tech.jobs);
-  //     } else {
-  //       res.status(200).send({ message: 'No jobs are listed.'})
-  //     }
-  // })
-  // }
 
 module.exports = TechController;

@@ -32,7 +32,6 @@ class TechProfileActions {
     axios
       .get(`/api/tech/profile/${email}`)
       .then(res => {
-        console.log(res);
         this.actions.fetchProfileSuccess(res);
       })
   }

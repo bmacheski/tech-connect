@@ -3,6 +3,7 @@
 import React from 'react';
 import UserStore from '../stores/UserStore';
 import UserActions from '../actions/UserActions';
+import cookie from 'react-cookie';
 
 class Navbar extends React.Component {
 
@@ -14,6 +15,11 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     UserStore.listen(this.onChange);
+
+    let user = cookie.load('user');
+    let isTech = cookie.load('isTech');
+
+    UserActions.setUserData(user, isTech);
   }
 
   componentWillUnmount() {
@@ -33,7 +39,6 @@ class Navbar extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     let user = this.state.user ? this.state.user : '';
     let isTech = this.state && this.state.isTech ? this.state.isTech : '';
 

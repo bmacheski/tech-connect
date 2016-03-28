@@ -15,7 +15,12 @@ class MessageListStore {
   }
 
   onRemoveMessageSuccess(id) {
-    this.messages = this.messages.filter( (m) => { return m._id !== id } )
+    this.messages = this.messages.filter(m => { return m._id !== id });
+  }
+
+  onUpdateMessageStatusSuccess(id) {
+    let idx = this.messages.map(m => { return m._id }).indexOf(id);
+    this.messages[idx].status = 'Read';
   }
 }
 

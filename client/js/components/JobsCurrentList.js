@@ -52,7 +52,7 @@ class JobsCurrent extends React.Component {
     return (
       <div className="ui container holder">
         <div className="ui celled list">
-          <h1>My Posted Jobs</h1>
+          <h1 className="ui dividing header">My Posted Jobs</h1>
           {this.renderJobsCurrentList()}
         </div>
       </div>

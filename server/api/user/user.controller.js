@@ -112,6 +112,19 @@ UserController.findReceivedMessages = (req, res, done) => {
     })
 }
 
+UserController.handleMarkAsRead = (req, res) => {
+  Message
+    .findById(req.params.messageId)
+    .exec((err, message) => {
+      message.status = 'Read';
+      message.save(err => {
+        if (err) { return done(err); }
+
+        res.sendStatus(200);
+      })
+    })
+}
+
 UserController.removeMessage = (req, res) => {
   User
     .findOne({ 'email': req.body.userId })

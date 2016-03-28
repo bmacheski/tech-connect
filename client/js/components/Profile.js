@@ -21,10 +21,10 @@ class Profile extends React.Component {
     let email = UserStore.getState().user;
 
     TechProfileStore.listen(this.onChange);
-    console.log(this.state)
-    // if (!this.state.profile && !this.state.location) {
+
+    if (!Object.keys(this.state.profile).length) {
       TechProfileActions.fetchProfile(email);
-   // / }
+    }
   }
 
   componentWillUnmount() {

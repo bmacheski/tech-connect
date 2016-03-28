@@ -37,7 +37,7 @@ class MessageListItem extends React.Component {
             {this.props.message.date}
           </div>
           <div className="content">
-            <span>Sent: </span>
+            <span>Status: </span>
             {this.props.message.status}
           </div>
         </div>
@@ -47,7 +47,11 @@ class MessageListItem extends React.Component {
             onClick={this.handleReply.bind(this)}>
             Reply
           </button>
-          <button className="medium ui button">Mark as read</button>
+          <button
+            className="medium ui button"
+            onClick={this.props.markRead}>
+            Mark as read
+          </button>
           <button
             className="medium ui button"
             onClick={this.removeMessage.bind(this)}>

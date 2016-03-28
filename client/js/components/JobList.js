@@ -27,7 +27,7 @@ class JobList extends React.Component {
     this.setState(state);
   }
 
-  _renderJobList() {
+  renderJobList() {
     let openJobs = this.state.jobs.filter((job) => { return job.status === 'Open' });
 
     { return openJobs.length ?
@@ -51,7 +51,7 @@ class JobList extends React.Component {
       <div className="ui container holder">
         <div className="ui celled list">
           <h1 className="ui dividing header">All Available Jobs</h1>
-          {this._renderJobList()}
+          {this.renderJobList()}
         </div>
       </div>
     )

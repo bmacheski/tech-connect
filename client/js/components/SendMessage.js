@@ -43,14 +43,19 @@ class SendMessage extends React.Component {
     }
   }
 
+  renderTitle() {
+    return this.context.router.getCurrentParams().senderId;
+  }
+
   render() {
     return (
       <div className="ui container holder">
+        <h1 className="ui dividing header">Create a message</h1>
+        <h3>To: {this.renderTitle()}</h3>
         <form
           className="ui fluid form"
           onSubmit={this.submitMessage.bind(this)}>
           <div className="field">
-            <label>Message</label>
             <textarea
               placeholder="Message"
               value={this.state.message}

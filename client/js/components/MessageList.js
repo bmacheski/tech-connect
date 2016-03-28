@@ -13,6 +13,7 @@ class MessageList extends React.Component {
     super(props);
     this.state = MessageListStore.getState();
     this.onChange = this.onChange.bind(this);
+    this.handleMarkAsRead = this.handleMarkAsRead.bind(this);
   }
 
   componentWillMount() {
@@ -30,6 +31,10 @@ class MessageList extends React.Component {
     this.setState(state);
   }
 
+  handleMarkAsRead(message) {
+    MessageListActions.updateMessageStatus(message._id);
+  }
+
   renderMessagesList() {
     { return this.state.messages.length ?
       (
@@ -38,6 +43,7 @@ class MessageList extends React.Component {
             <MessageListItem
               key={message._id}
               message={message}
+              markRead={this.handleMarkAsRead.bind(this, message)}
             />
           )
         })

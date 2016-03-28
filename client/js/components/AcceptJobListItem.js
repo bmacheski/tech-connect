@@ -13,10 +13,12 @@ class AcceptJobListItem extends React.Component {
 
   render() {
     return (
-      <div className="item">
+      <div className="item message-item">
+      <div className="message-container">
         <div className="header">
-          <span>Title:  </span>
+          <h3>Title:
           {this.props.job.title}
+          </h3>
         </div>
         <div className="content">
           <span>Description:  </span>
@@ -38,8 +40,9 @@ class AcceptJobListItem extends React.Component {
           <span>Posted by:  </span>
           {this.props.job.posted_by}
         </div>
+      </div>
         <div
-          className="medium ui button repl-button"
+          className="medium ui button repl-button user-mess"
           onClick={this.handleSend.bind(this)}>
           Send User a Message
         </div>

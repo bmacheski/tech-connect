@@ -8,7 +8,8 @@ class MessageListActions {
   constructor() {
     this.generateActions(
       'fetchMessagesSuccess',
-      'removeMessageSuccess'
+      'removeMessageSuccess',
+      'updateMessageStatusSuccess'
     )
   }
 
@@ -29,6 +30,14 @@ class MessageListActions {
       .then((res) => {
         this.actions.removeMessageSuccess(id);
      })
+  }
+
+  updateMessageStatus(messageId) {
+    axios
+      .put(`/api/user/message/${messageId}`)
+      .then(() => {
+        this.actions.updateMessageStatusSuccess(messageId);
+      })
   }
 }
 

@@ -118,13 +118,17 @@ form input, form textarea {
   display: inline;
 }
 
+.message-item {
+  border-top: 0px !important;
+}
+
 .mas-read {
   float: right;
   position: relative;
   bottom: 60px;
 }
 
-.job-remove {
+.job-remove, .user-mess {
   float: right;
   position: relative;
   bottom: 80px;
