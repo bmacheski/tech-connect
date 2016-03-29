@@ -16,14 +16,14 @@ class ReviewList extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let user = UserStore.getState().user;
 
     ReviewStore.listen(this.onChange);
     ReviewActions.getTechReviews(user);
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     ReviewStore.unlisten(this.onChange);
   }
 

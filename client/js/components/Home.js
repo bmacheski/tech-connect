@@ -14,7 +14,7 @@ class Home extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     HomeStore.listen(this.onChange);
     HomeActions.fetchJobsCount();
   }

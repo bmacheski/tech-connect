@@ -17,7 +17,7 @@ class Profile extends React.Component {
     this.updateProfile = this.updateProfile.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let email = UserStore.getState().user;
 
     TechProfileStore.listen(this.onChange);

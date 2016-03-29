@@ -16,7 +16,7 @@ class AcceptJobList extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let email = UserStore.getState().user;
 
     AcceptJobListStore.listen(this.onChange);

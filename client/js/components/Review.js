@@ -15,11 +15,11 @@ class Review extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     ReviewStore.listen(this.onChange);
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     ReviewStore.unlisten(this.onChange);
   }
 

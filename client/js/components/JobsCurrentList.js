@@ -14,7 +14,7 @@ class JobsCurrent extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let id = UserStore.getState().user;
 
     JobsCurrentStore.listen(this.onChange);

@@ -6,7 +6,7 @@ import UserStore from '../stores/UserStore';
 class Landing extends React.Component {
 
   render() {
-    let loggedIn = UserStore.getState().user ? UserStore.getState().user : '';
+    let loggedIn = UserStore.getState().user;
 
     { return loggedIn ?
       (

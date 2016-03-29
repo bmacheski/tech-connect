@@ -14,7 +14,7 @@ class JobList extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     JobListStore.listen(this.onChange);
     JobListActions.fetchJobs();
   }

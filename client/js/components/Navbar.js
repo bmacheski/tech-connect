@@ -50,7 +50,7 @@ class Navbar extends React.Component {
     if (!user) {
       return (
         <div className="ui inverted menu navbar page grid">
-          <nav className="logo-container">
+          <nav className="log o-container">
             <a className="item" href="#">Tech Connect</a>
           </nav>
           <div className="right menu">

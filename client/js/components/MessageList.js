@@ -17,7 +17,7 @@ class MessageList extends React.Component {
     this.handleMarkAsRead = this.handleMarkAsRead.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let email = UserStore.getState().user;
 
     MessageListStore.listen(this.onChange);
