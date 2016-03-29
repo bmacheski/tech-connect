@@ -4,7 +4,7 @@ Tech Connect is an application to connect those in need of technical support wit
 
 ## Demo
 
-[tech-connect](https://node-techconnect.herokuapp.com)
+[tech-connect](https://tech-connect.herokuapp.com)
 
 ## Tech Stack
 
