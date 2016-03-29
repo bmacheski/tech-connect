@@ -15,6 +15,6 @@ module.exports = {
   google: {
     'clientID': '278816631764-ukaocbeaqs90h8p2lrjroaik4ponup4l.apps.googleusercontent.com',
     'clientSecret': 'q0fC7hO7QAJ9-9UVyxa6hGgY',
-    'callbackURL': 'https://node-techconnect.herokuapp.com/auth/google/callback'
+    'callbackURL': 'https://tech-connect.herokuapp.com/auth/google/callback'
   }
 };
