@@ -18,7 +18,6 @@ UserController.signIn = (profile, done, token) => {
         // Save updated google info
         user.save((err) => {
           if (err) { return done(err); }
-
         })
 
        return done(null, user);
@@ -56,10 +55,11 @@ UserController.registerAsTech = (req, res, done) => {
           if (err) { return done(err); }
         })
 
-        let tech      = new Tech();
-        tech.user_id  = user._id;
-        tech.bio      = req.body.bio;
-        tech.location = req.body.location;
+        let tech        = new Tech();
+        tech.user_id    = user._id;
+        tech.bio        = req.body.bio;
+        tech.phone      = req.body.phone;
+        tech.location   = req.body.location;
 
         tech.save(err => {
           if (err) { return done(err); }

@@ -5,6 +5,7 @@ import MessageListActions from '../actions/MessageListActions';
 import MessageListStore from '../stores/MessageListStore';
 import UserStore from '../stores/UserStore';
 import MessageListItem from './MessageListItem';
+import Loading from './Loading';
 import cookie from 'react-cookie';
 
 class MessageList extends React.Component {
@@ -54,14 +55,17 @@ class MessageList extends React.Component {
   }
 
   render() {
-    return (
-      <div className="ui container holder">
-        <div className="ui celled list">
+    { return this.state.loadingState ?
+      <Loading /> :
+      (
+        <div className="ui container holder">
+          <div className="ui celled list">
           <h1 className="ui dividing header">Current Messages</h1>
           {this.renderMessagesList()}
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }
 

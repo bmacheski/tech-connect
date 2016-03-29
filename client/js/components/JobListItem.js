@@ -4,6 +4,7 @@ import React from 'react';
 import JobListActions from '../actions/JobListActions';
 import UserStore from '../stores/UserStore';
 import cookie from 'react-cookie';
+import toastr from 'toastr';
 
 class JobListItem extends React.Component {
 
@@ -15,15 +16,18 @@ class JobListItem extends React.Component {
     let location = this.props.job.location;
     let uid = this.props.job.uid;
 
-    JobListActions.acceptJob(email, jobId, title, description, location, uid);
+    if (this.props.job.status === 'Open') {
+      JobListActions.acceptJob(email, jobId, title, description, location, uid);
+    } else {
+      toastr.warning('That job is closed! Try another.')
+    }
   }
 
   render() {
-    { return this.props.job.status === 'Open' ?
-      (
-        <div className="item">
+    return (
+        <div className="list-item item">
           <div className="header">
-            <h2>{this.props.job.title}</h2>
+            <h3>{this.props.job.title}</h3>
           </div>
           <div className="content">
             <span>Description:  </span>
@@ -42,15 +46,13 @@ class JobListItem extends React.Component {
             {this.props.job.status}
           </div>
           <div
-            className="medium ui button repl-button"
+            className="medium ui button repl-button repl-div"
             onClick={this.acceptJob.bind(this)}>
             Add
           </div>
         </div>
-      ): (
-        <div />
       )
-    }
-  };
+  }
 }
+
 export default JobListItem;

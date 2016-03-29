@@ -8,25 +8,26 @@ class JobsCurrentActions {
   constructor() {
     this.generateActions(
       'fetchCurrentJobsSuccess',
-      'removeCurrentJobSuccess'
+      'removeCompletedJobSuccess',
+      'markJobAsCompleteSuccess'
     )
   }
 
-  fetchCurrentJobs() {
+  fetchCurrentJobs(email) {
     axios
-      .get('/api/job/current')
+      .get(`/api/job/current/${email}`)
       .then((data) => {
         this.actions.fetchCurrentJobsSuccess(data);
       })
   }
 
-  removeCurrentJob(id) {
+  removeCompletedJob(id) {
     axios
       .post('/api/job/remove', {
         id: id
       })
       .then(() => {
-        this.actions.removeCurrentJobSuccess(id);
+        this.actions.removeCompletedJobSuccess(id);
       })
   }
 }

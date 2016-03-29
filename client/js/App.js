@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Router from 'react-router';
 import routes from './config/routes';
 
@@ -12,5 +13,5 @@ require('toastr/toastr.scss');
 require('semantic-ui-css/semantic.css');
 
 Router.run(routes, (Root, state) => {
-  React.render(<Root {...state} />, document.getElementById('app'));
+  ReactDOM.render(<Root {...state} />, document.getElementById('app'));
 });

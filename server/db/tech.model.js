@@ -5,9 +5,10 @@ const mongoose = require('mongoose');
 const TechnicianSchema = new mongoose.Schema({
   bio: String,
   location: String,
+  phone: String,
   user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   jobs: [
-    { type: mongoose.Schema.Types.ObjectId, ref: 'Job' } // All jobs accepted by the technician
+    { type: mongoose.Schema.Types.ObjectId, ref: 'Job' } // Jobs accepted by the technician
   ]
 });
 

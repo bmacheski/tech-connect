@@ -66,8 +66,9 @@ TechController.updateProfile = (req, res) => {
         .exec((err, tech) => {
           if (err) { return done(err); }
 
-          tech.bio = req.body.bio;
+          tech.bio      = req.body.bio;
           tech.location = req.body.location;
+          tech.phone    = req.body.phone;
           tech.save(err => {
             if (err) { return done(err); }
           })

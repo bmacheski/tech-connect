@@ -19,6 +19,8 @@ class TechProfile extends React.Component {
         <p>{this.props.profile.bio}</p>
         <h3>Location</h3>
         <p>{this.props.profile.location}</p>
+        <h3>Phone number</h3>
+        <p>{this.props.profile.phone}</p>
       </div>
     )
   }

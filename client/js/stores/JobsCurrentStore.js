@@ -15,9 +15,10 @@ class JobsCurrentStore {
     this.currentJobs = res.data;
   }
 
-  onRemoveCurrentJobSuccess(id) {
+  onRemoveCompletedJobSuccess(id) {
     this.currentJobs = this.currentJobs.filter((job) => { return job._id !== id });
-    toastr.success('Job removed successfully!')
+
+    toastr.success('Job removed successfully!');
   }
 }
 

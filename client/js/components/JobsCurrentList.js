@@ -4,6 +4,7 @@ import React from 'react';
 import JobsCurrentStore from '../stores/JobsCurrentStore';
 import JobsCurrentActions from '../actions/JobsCurrentActions';
 import JobsCurrentItem from './JobsCurrentItem';
+import UserStore from '../stores/UserStore';
 
 class JobsCurrent extends React.Component {
 
@@ -14,8 +15,10 @@ class JobsCurrent extends React.Component {
   }
 
   componentWillMount() {
+    let id = UserStore.getState().user;
+
     JobsCurrentStore.listen(this.onChange);
-    JobsCurrentActions.fetchCurrentJobs();
+    JobsCurrentActions.fetchCurrentJobs(id);
   }
 
   componentWillUnmount() {
@@ -26,11 +29,13 @@ class JobsCurrent extends React.Component {
     this.setState(state);
   }
 
-  removeCurrentJob(job) {
-    JobsCurrentActions.removeCurrentJob(job._id);
+  removeCompletedJob(job) {
+    JobsCurrentActions.removeCompletedJob(job._id);
   }
 
-  renderJobsCurrentList() {
+  renderJobsCompletedList() {
+    let buttonTitle = 'Remove';
+
     { return this.state.currentJobs.length ?
       (
         this.state.currentJobs.map((job) => {
@@ -38,12 +43,13 @@ class JobsCurrent extends React.Component {
             <JobsCurrentItem
               key={job._id}
               job={job}
-              removeJob={this.removeCurrentJob.bind(this, job)}
+              handleJob={this.removeCompletedJob.bind(this, job)}
+              button={buttonTitle}
             />
           )
         })
       ) : (
-        <h2>There are currently no posted jobs.</h2>
+        <h2>There are currently no completed jobs.</h2>
       )
     }
   }
@@ -53,7 +59,7 @@ class JobsCurrent extends React.Component {
       <div className="ui container holder">
         <div className="ui celled list">
           <h1 className="ui dividing header">My Posted Jobs</h1>
-          {this.renderJobsCurrentList()}
+          {this.renderJobsCompletedList()}
         </div>
       </div>
     )

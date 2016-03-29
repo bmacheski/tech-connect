@@ -3,11 +3,12 @@
 import React from 'react';
 import TechProfileActions from '../actions/TechProfileActions';
 import TechProfileStore from '../stores/TechProfileStore';
+import UserActions from '../actions/UserActions';
 import UserStore from '../stores/UserStore';
 import cookie from 'react-cookie';
 
 /**
- *  Register as technicians
+ *  Register as technician
  */
 
 class Register extends React.Component {
@@ -36,9 +37,10 @@ class Register extends React.Component {
     let email = UserStore.getState().user;
     let location = this.state.profile.location;
     let bio = this.state.profile.bio;
+    let phone = this.state.profile.phone;
     let router = this.context.router;
 
-    TechProfileActions.createProfile(email, location, bio);
+    TechProfileActions.createProfile(email, location, bio, phone);
 
     router.transitionTo('home');
   }
@@ -59,6 +61,17 @@ class Register extends React.Component {
               value={this.state.location}
               type="text"
               onChange={TechProfileActions.updateLocation}>
+            </input>
+          </div>
+          <div className="field">
+            <h3>
+              <label>Phone number</label>
+            </h3>
+            <input
+              placeholder="Phone number"
+              value={this.state.phone}
+              type="text"
+              onChange={TechProfileActions.updatePhone}>
             </input>
           </div>
           <div className="field">

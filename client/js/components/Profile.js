@@ -43,8 +43,9 @@ class Profile extends React.Component {
     let email = UserStore.getState().user;
     let bio = this.state.profile.bio;
     let location = this.state.profile.location;
+    let phone = this.state.profile.phone;
 
-    TechProfileActions.updateProfile(email, bio, location, () => {
+    TechProfileActions.updateProfile(email, bio, location, phone, () => {
       TechProfileActions.toggleEdit();
     })
   }
@@ -65,6 +66,7 @@ class Profile extends React.Component {
           edit={this.updateProfile}
           updateLocation={TechProfileActions.updateLocation}
           updateBio={TechProfileActions.updateBio}
+          updatePhone={TechProfileActions.updatePhone}
         />
       )
     }

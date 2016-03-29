@@ -128,8 +128,27 @@ form input, form textarea {
   bottom: 60px;
 }
 
-.job-remove, .user-mess {
+.gmap {
+  height: 300px !important;
+  width: 400px !important;
+}
+
+.job-remove, .user-mess, .repl-div {
   float: right;
   position: relative;
   bottom: 80px;
+}
+
+.loading {
+  position: relative !important;
+  top: 250px !important;
+}
+
+.list-item, .job-container, .current-job-item, .message-item{
+  border-top: 0 !important;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.message-item h3 {
+  display: inline;
 }

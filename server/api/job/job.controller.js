@@ -45,7 +45,8 @@ JobController.createJob = (req, res, done) => {
 
 JobController.findJobs = (req, res) => {
   Job
-    .find({}, (err, jobs) => {
+    .find({})
+    .exec((err, jobs) => {
       if (err) { return done(err); }
 
       res.status(200).send(jobs);
@@ -58,7 +59,8 @@ JobController.findJobs = (req, res) => {
 
 JobController.findCurrentJobs = (req, res, next) => {
   Job
-    .find({ uid: req.cookies.id }, (err, jobs) => {
+    .find({ posted_by: req.params.email })
+    .exec((err, jobs) => {
       if (err) { return done(err); }
 
       res.status(200).send(jobs);
@@ -79,20 +81,21 @@ JobController.removeJob = (req, res, next) => {
  * Update job with `closed` status.
  */
 
-JobController.updateJob = function(req, res) {
+JobController.updateJob = (req, res) => {
   Job
-    .findOne({ _id: req.body.jobId }, function(err, job) {
+    .findOne({ _id: req.body.jobId })
+    .exec((err, job) => {
       if (err) { return done(err); }
+
       if (job) {
         job.status = 'Closed';
 
         job.save(err => {
           if (err) { return done(err); }
 
-          res.status(200).send({ message: 'Job was added successfully.' })
+          res.status(200).send({ message: 'Job updated as closed successfully.' })
         })
       }
-
     })
 }
 

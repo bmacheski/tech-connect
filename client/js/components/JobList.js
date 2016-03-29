@@ -28,7 +28,7 @@ class JobList extends React.Component {
   }
 
   renderJobList() {
-    let openJobs = this.state.jobs.filter((job) => { return job.status === 'Open' });
+    let openJobs = this.state.jobs;
 
     { return openJobs.length ?
       (

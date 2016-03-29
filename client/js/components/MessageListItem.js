@@ -22,22 +22,22 @@ class MessageListItem extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="message-item">
         <div className="item message-container">
           <div className="header">
-              <span>From:  </span>
+              <h3>From:  </h3>
               {this.props.message.sender_id}
           </div>
           <div className="content">
-            <span>Message: </span>
+            <h3>Message: </h3>
             {this.props.message.message}
           </div>
           <div className="content">
-            <span>Sent: </span>
+            <h3>Sent: </h3>
             {this.props.message.date}
           </div>
           <div className="content">
-            <span>Status: </span>
+            <h3>Status: </h3>
             {this.props.message.status}
           </div>
         </div>

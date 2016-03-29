@@ -36,6 +36,13 @@ class ProfileEdit extends React.Component {
           value={this.props.profile.location}
           onChange={this.props.updateLocation}
         />
+        <h3>Phone</h3>
+        <input
+          type="text"
+          className="field"
+          value={this.props.profile.phone}
+          onChange={this.props.updatePhone}
+        />
       </div>
     )
   }

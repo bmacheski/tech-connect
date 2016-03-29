@@ -15,7 +15,7 @@ class UserStore {
 
   onSetUserDataSuccess(res) {
     this.user = res.data;
-    console.log('res', res)
+
     if (res.isTech !== undefined) {
       this.isTech = res.isTech;
     }

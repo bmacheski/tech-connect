@@ -14,11 +14,9 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
+    let { user, isTech } = this.loadUserData();
+
     UserStore.listen(this.onChange);
-
-    let user = cookie.load('user');
-    let isTech = cookie.load('isTech');
-
     UserActions.setUserData(user, isTech);
   }
 
@@ -30,6 +28,12 @@ class Navbar extends React.Component {
     this.setState(state);
   }
 
+  loadUserData() {
+    let user = cookie.load('user');
+    let isTech = cookie.load('isTech');
+    return { user: user, isTech: isTech }
+  }
+
   logout() {
     let router = this.context.router;
 
@@ -39,8 +43,8 @@ class Navbar extends React.Component {
   }
 
   render() {
-    let user = this.state.user ? this.state.user : '';
-    let isTech = this.state && this.state.isTech ? this.state.isTech : '';
+    let user = this.state.user;
+    let isTech = this.state.isTech;
 
     // Unauthenticated users navigation view
     if (!user) {

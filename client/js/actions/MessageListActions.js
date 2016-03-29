@@ -9,11 +9,14 @@ class MessageListActions {
     this.generateActions(
       'fetchMessagesSuccess',
       'removeMessageSuccess',
-      'updateMessageStatusSuccess'
+      'updateMessageStatusSuccess',
+      'triggerLoading'
     )
   }
 
   fetchMessages(email) {
+    this.actions.triggerLoading();
+
     axios
       .get(`/api/user/message/${email}`)
       .then((res) => {
@@ -30,6 +33,10 @@ class MessageListActions {
       .then((res) => {
         this.actions.removeMessageSuccess(id);
      })
+  }
+
+  triggerLoading() {
+    this.actions.triggerLoading();
   }
 
   updateMessageStatus(messageId) {

@@ -20,6 +20,10 @@ class TechProfileStore {
     this.profile.bio = e.target.value;
   }
 
+  onUpdatePhone(e) {
+    this.profile.phone = e.target.value;
+  }
+
   onToggleEdit() {
     this.editState = !this.editState;
   }
@@ -27,6 +31,7 @@ class TechProfileStore {
   onFetchProfileSuccess(res) {
     this.profile.location = res.data.location;
     this.profile.bio = res.data.bio;
+    this.profile.phone = res.data.phone;
   }
 
   onUpdateProfileSuccess(cb) {
