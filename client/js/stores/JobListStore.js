@@ -10,10 +10,12 @@ class JobListStore {
     this.bindActions(JobListActions);
     this.jobs = [];
     this.acceptJobMessage = '';
+    this.loadingState = false;
   }
 
   onFetchJobsSuccess(res) {
     this.jobs = res.data;
+    this.loadingState = !this.loadingState
   }
 
   onUpdateJobSuccess(obj) {
@@ -24,6 +26,10 @@ class JobListStore {
     this.acceptJobMessage = obj.res.data.message;
 
     toastr.success(this.acceptJobMessage);
+  }
+
+  onTriggerLoading() {
+    this.loadingState = !this.loadingState;
   }
 }
 

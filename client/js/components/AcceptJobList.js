@@ -5,8 +5,8 @@ import AcceptJobListItem from './AcceptJobListItem';
 import AcceptJobListActions from '../actions/AcceptJobListActions';
 import AcceptJobListStore from '../stores/AcceptJobListStore';
 import UserStore from '../stores/UserStore';
+import Loading from './Loading';
 import cookie from 'react-cookie';
-
 
 class AcceptJobList extends React.Component {
 
@@ -49,14 +49,17 @@ class AcceptJobList extends React.Component {
   }
 
   render() {
-    return (
-      <div className="ui container holder">
-        <div className="ui celled list accept-list">
-          <h1 className="ui dividing header">Accepted Jobs</h1>
-          {this.renderAcceptedJobList()}
+    { return this.state.loadingState ?
+      <Loading /> :
+      (
+        <div className="ui container holder">
+          <div className="ui celled list accept-list">
+            <h1 className="ui dividing header">Accepted Jobs</h1>
+            {this.renderAcceptedJobList()}
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }
 

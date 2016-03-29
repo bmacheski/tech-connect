@@ -9,11 +9,14 @@ class AcceptJobListActions {
     this.generateActions(
       'fetchAllJobsSuccess',
       'fetchAllJobsFailure',
-      'fetchProfileSuccess'
+      'fetchProfileSuccess',
+      'triggerLoading'
     )
   }
 
   fetchAllJobs(email) {
+    this.actions.triggerLoading();
+
     axios
       .get(`/api/acceptjobs/${email}`)
       .then(data => {
@@ -22,6 +25,10 @@ class AcceptJobListActions {
       .catch(err => {
         this.actions.fetchAllJobsFailure(err);
       })
+  }
+
+  triggerLoading() {
+    this.actions.triggerLoading();
   }
 }
 

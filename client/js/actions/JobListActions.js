@@ -9,11 +9,14 @@ class JobListActions {
     this.generateActions(
       'fetchJobsSuccess',
       'updateJobStatus',
-      'updateJobSuccess'
+      'updateJobSuccess',
+      'triggerLoading'
     )
   }
 
   fetchJobs() {
+    this.actions.triggerLoading();
+
     axios
       .get('/api/job/all')
       .then((jobs) => {
@@ -51,6 +54,10 @@ class JobListActions {
 
         this.actions.updateJobSuccess(obj);
       })
+  }
+
+  triggerLoading() {
+    this.actions.triggerLoading();
   }
  }
 

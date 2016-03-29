@@ -32,7 +32,7 @@ class ReviewList extends React.Component {
   }
 
   renderReviews() {
-    { return (this.state.reviews) ?
+    { return (this.state.reviews.length) ?
       (
         this.state.reviews.map((review, i) => {
           return (
