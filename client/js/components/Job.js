@@ -33,10 +33,6 @@ class Job extends React.Component {
           <span>Status: </span>
           {this.props.job.status}
         </div>
-        <div className="content">
-          <span>Completed: </span>
-          {this.props.job.completed ? 'True' : 'False'}
-        </div>
       </div>
     )
   }

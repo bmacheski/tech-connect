@@ -33,18 +33,24 @@ class JobsCurrent extends React.Component {
     JobsCurrentActions.removeCompletedJob(job._id);
   }
 
-  renderJobsCompletedList() {
-    let buttonTitle = 'Remove';
+  postReview(job) {
+    let tech = job.accepted_by;
 
+    if (tech) {
+      this.context.router.transitionTo(`/job/current/${tech}/review`)
+    }
+  }
+
+  renderJobsCompletedList() {
     { return this.state.currentJobs.length ?
       (
-        this.state.currentJobs.map((job) => {
+        this.state.currentJobs.map(job => {
           return (
             <JobsCurrentItem
               key={job._id}
               job={job}
+              postReview={this.postReview.bind(this, job)}
               handleJob={this.removeCompletedJob.bind(this, job)}
-              button={buttonTitle}
             />
           )
         })
@@ -64,6 +70,10 @@ class JobsCurrent extends React.Component {
       </div>
     )
   }
+}
+
+JobsCurrent.contextTypes = {
+  router: React.PropTypes.func.isRequired
 };
 
 export default JobsCurrent;

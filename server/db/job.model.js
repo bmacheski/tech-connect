@@ -10,7 +10,7 @@ const JobSchema = new mongoose.Schema({
   job_date: String,
   posted_by: String,
   status: { type: String, default: 'Open' },
-  accepted_by: { type: mongoose.Schema.Types.ObjectId, ref: 'Tech' }
+  accepted_by: String
 });
 
 module.exports = mongoose.model('Job', JobSchema);

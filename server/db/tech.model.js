@@ -9,6 +9,9 @@ const TechnicianSchema = new mongoose.Schema({
   user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   jobs: [
     { type: mongoose.Schema.Types.ObjectId, ref: 'Job' } // Jobs accepted by the technician
+  ],
+  reviews: [
+    { message: String, stars: Number }
   ]
 });
 

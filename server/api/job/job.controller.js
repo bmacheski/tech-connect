@@ -85,10 +85,12 @@ JobController.updateJob = (req, res) => {
   Job
     .findOne({ _id: req.body.jobId })
     .exec((err, job) => {
+
       if (err) { return done(err); }
 
       if (job) {
-        job.status = 'Closed';
+        job.status      = 'Closed';
+        job.accepted_by = req.body.id;
 
         job.save(err => {
           if (err) { return done(err); }

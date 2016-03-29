@@ -24,6 +24,8 @@ router.get('/api/tech/profile/:email', techController.findProfile)
 router.put('/api/tech/profile/:email', techController.updateProfile)
 router.post('/api/tech/create', userController.registerAsTech);
 router.post('/api/tech/job/accept', techController.acceptJob)
+router.post('/api/tech/:techId/review', techController.postReview)
+router.get('/api/tech/:techId/review', techController.getReview)
 
 // User related routes
 router.post('/api/user/message', userController.saveReceivedMessage)

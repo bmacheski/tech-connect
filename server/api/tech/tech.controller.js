@@ -13,6 +13,7 @@ TechController.acceptJob = (req, res, done) => {
   User
     .findOne({ email: req.body.id })
     .exec((err, user) => {
+
       Tech
       .findOne({ 'user_id': user._id })
       .exec((err, tech) => {
@@ -52,6 +53,44 @@ TechController.findProfile = (req, res) => {
           if (err) { return done(err); }
 
           res.status(200).send(tech);
+        })
+    })
+}
+
+TechController.postReview = (req, res) => {
+  User
+    .findOne({ email: req.params.techId })
+    .exec((err, user) => {
+
+      Tech
+        .findOne({ user_id: user._id })
+        .exec((err, tech) => {
+
+          tech.reviews.push({
+            message: req.body.review,
+            stars: req.body.stars
+          })
+
+          tech.save((err) => {
+            if (err) { return done(err); }
+
+            res.sendStatus(200);
+          })
+        })
+    })
+}
+
+TechController.getReview = (req, res) => {
+  User
+    .findOne({ email: req.params.techId })
+    .exec((err, user) => {
+
+      Tech
+        .findOne({ user_id: user._id })
+        .exec((err, tech) => {
+          if (err) { return done(err); }
+
+          res.status(200).send(tech.reviews);
         })
     })
 }

@@ -41,7 +41,8 @@ class JobListActions {
       .then((res) => {
         axios
           .post('/api/job/update', {
-            jobId: jid
+            jobId: jid,
+            id: id
           })
           return res
       })

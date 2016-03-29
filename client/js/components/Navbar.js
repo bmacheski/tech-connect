@@ -73,6 +73,7 @@ class Navbar extends React.Component {
             <a className="item" href="#/about">About</a>
             <a className="item" href="#/profile">Profile</a>
             <a className="item" href="#/job/list">View Jobs</a>
+            <a className="item" href="#/user/review">Reviews</a>
             <a className="item" href="#/job/accepted">Dashboard</a>
             <a className="item" href="#/user/messages">Messages</a>
             <a className="item" onClick={this.logout.bind(this)}>Logout</a>

@@ -28,6 +28,7 @@ class TechProfileActions {
       })
       .then(() => {
         UserActions.setUserData(email, true);
+
         toastr.success('You have successfully registered!')
       })
   }

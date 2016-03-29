@@ -14,6 +14,9 @@ import AcceptJobList from '../components/AcceptJobList';
 import SendMessage from '../components/SendMessage';
 import Profile from '../components/Profile';
 import MessageList from '../components/MessageList';
+import Review from '../components/Review';
+import ReviewList from '../components/ReviewList';
+
 import { Router, DefaultRoute, Route } from 'react-router';
 
 export default (
@@ -23,6 +26,8 @@ export default (
     <Route name="home" path="/home" handler={Home} />
     <Route name="about" path="/about" handler={About} />
     <Route name="profile" path="/profile" handler={Profile} />
+    <Route name="review" path="/job/current/:tech/review" handler={Review} />
+    <Route name="reviewlist" path="/user/review" handler={ReviewList} />
     <Route name="techregister" path="/register/tech" handler={Register} />
     <Route name="createjob" path="/job/create" handler={JobCreate} />
     <Route name="currentjobs" path="/job/current" handler={JobsCurrentList} />
