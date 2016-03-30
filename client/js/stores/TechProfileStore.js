@@ -8,7 +8,7 @@ class TechProfileStore {
 
   constructor() {
     this.bindActions(TechProfileActions);
-    this.profile = {}
+    this.profile = {};
     this.editState = false;
   }
 

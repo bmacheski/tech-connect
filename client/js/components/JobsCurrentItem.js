@@ -7,36 +7,38 @@ import Job from './Job'
 class JobsCurrentItem extends React.Component {
 
   render() {
-    if (this.props.job.status === 'Closed') {
-
-      return (
+    { return this.props.job.status === 'Closed' ?
+      (
         <div className="current-job-item">
           <Job
             job={this.props.job}
           />
           <div className="job-remove">
             <button
-              className="ui button"
+              className="tiny ui button"
               onClick={this.props.handleJob}>
               Remove
             </button>
             <button
-              className="ui button"
+              className="tiny ui button"
               onClick={this.props.postReview}>
               Post review
             </button>
+            <button
+              className="tiny ui button"
+              onClick={this.props.viewProfile}>
+              Technician's Profile
+            </button>
           </div>
         </div>
-      )
-    } else {
-      return (
+      ) : (
         <div className="current-job-item">
           <Job
             job={this.props.job}
           />
           <div className="job-remove">
             <button
-              className="ui button"
+              className="tiny ui button"
               onClick={this.props.handleJob}>
               Remove
             </button>

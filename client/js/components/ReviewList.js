@@ -53,7 +53,7 @@ class ReviewList extends React.Component {
 
   render() {
     return (
-      <div className="ui container holder">
+      <div className="ui container holder stars">
         <div className="ui celled list">
           <h1 className="ui dividing header">Reviews</h1>
           {this.renderReviews()}

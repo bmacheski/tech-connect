@@ -41,6 +41,12 @@ class JobsCurrent extends React.Component {
     }
   }
 
+  handleProfileTransition(job) {
+    let tech = job.accepted_by;
+
+    this.context.router.transitionTo(`/job/current/${tech}/profile`);
+  }
+
   renderJobsCompletedList() {
     { return this.state.currentJobs.length ?
       (
@@ -49,6 +55,7 @@ class JobsCurrent extends React.Component {
             <JobsCurrentItem
               key={job._id}
               job={job}
+              viewProfile={this.handleProfileTransition.bind(this, job)}
               postReview={this.postReview.bind(this, job)}
               handleJob={this.removeCompletedJob.bind(this, job)}
             />
